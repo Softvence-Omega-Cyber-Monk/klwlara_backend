@@ -7,7 +7,6 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UtilsModule } from './modules/utils/utils.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { NotificationModule } from './modules/notification/notification.module';
 import { RedisModule } from './common/db/redis/redis.module';
 import { BullModule } from '@nestjs/bullmq';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -42,7 +41,6 @@ import { SeedService } from './common/seed/seed.services';
     UserModule,
     AuthModule,
 
-    NotificationModule,
     RedisModule,
   ],
   controllers: [AppController],

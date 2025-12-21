@@ -4,31 +4,14 @@ model User {
   phoneNumber      String       @unique  
   password         String
   name             String
-  role             Role      @default(VIEWER)
-  profileImage     String?
-  language         Language  @default(ENGLISH)
   timezone         DateTime?
   verification2FA  Boolean   @default(false)
   status           Boolean   @default(false)
   lastActive       Boolean   @default(false)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
-  userStatus       UserStatus @default(ACTIVE)
   
 
   
-  supporter                 Supporter?
-  superAdmin                SuperAdmin?
-  admin                     Admin?
-  // Notification relations
-  notificationSupporter     NotificationPermissionSupporter?
-  notificationAdmin         NotificationPermissionAdmin?
-  notificationSuperAdmin   NotificationPermissionSuperAdmin?
   
-  // Other relations
-  notifications             NotificationProvision[]
-  otpVerification           OtpVerification?
-  payments                  Payment[]
-
-  @@map("users")
 }
