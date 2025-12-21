@@ -1,0 +1,68 @@
+
+
+services:
+  # lawalbackendbackend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: sakibsakib/lawalbackendbackendadmin:latest
+  #   container_name: lawalbackendbackend
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - postgres_db
+  #     - redis_cache
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     - app_network
+
+  postgres_db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  redis_cache:
+    image: redis:7
+    container_name: redis_cache
+    restart: always
+    ports:
+      - "6380:6379"
+    volumes:
+      - redisdata:/data
+    networks:
+      - app_network
+
+  prisma_studio:
+    image: node:20-bullseye
+    container_name: prisma_studio
+    working_dir: /app
+    restart: always
+    depends_on:
+      - postgres_db
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres_db:5432/appdb?schema=public"
+    command: sh -c "npm install --silent && npx prisma studio --port 5555 --browser none"
+    ports:
+      - "5555:5555"
+    networks:
+      - app_network
+
+volumes:
+  pgdata:
+  redisdata:
+
+networks:
+  app_network:
+    driver: bridge

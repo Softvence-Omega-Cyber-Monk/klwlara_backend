@@ -1,0 +1,15 @@
+model Supporter {
+  id              String        @id @default(uuid())
+  userId          String?       @unique
+  supporterRole   SupporterRole
+  skills          String[]
+  workload        Int?          // Max number 4
+  workItems       String[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  // Relations
+  user            User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("supporters")
+}

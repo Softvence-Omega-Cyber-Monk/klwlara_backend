@@ -1,0 +1,36 @@
+
+
+// Core Notification model
+model Notification {
+  id          String    @id @default(uuid())
+  senderId   String
+  receiverIds String[]
+  projectId   String?
+  context     String
+  type        NotificationType
+  isRead      Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  provisions  NotificationProvision[]
+
+  @@map("notifications")
+}
+
+// Junction table for User-Notification many-to-many relationship
+model NotificationProvision {
+  userId         String
+  notificationId String
+
+  // Relations
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+
+  @@id([userId, notificationId])
+  @@map("notification_provisions")
+}
+
+
+
+

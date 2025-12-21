@@ -1,0 +1,49 @@
+
+
+// Notification Permission for Supporters
+model NotificationPermissionSupporter {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  assignNewProject  Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_permissions_supporter")
+}
+
+// Notification Permission for Admins
+model NotificationPermissionAdmin {
+  id                    String   @id @default(uuid())
+  userId                String   @unique
+  storageLimit          Boolean  @default(true)
+  receivedPayment       Boolean  @default(true)
+  createClient          Boolean  @default(true)
+  createTicket          Boolean  @default(true)
+  paymentCycleChange    Boolean  @default(true)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  // Relations
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_permissions_admin")
+}
+
+// Notification Permission for Super Admins
+model NotificationPermissionSuperAdmin {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  storageLimit      Boolean  @default(true)
+  receivedPayment   Boolean  @default(true)
+  createClient      Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user              User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_permissions_super_admin")
+}
