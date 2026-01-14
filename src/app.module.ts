@@ -7,8 +7,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UtilsModule } from './modules/utils/utils.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { RedisModule } from './common/db/redis/redis.module';
-import { BullModule } from '@nestjs/bullmq';
+// import { RedisModule } from './common/db/redis/redis.module';
+
 import { ScheduleModule } from '@nestjs/schedule';
 import { SeedService } from './common/seed/seed.services';
 
@@ -20,28 +20,12 @@ import { SeedService } from './common/seed/seed.services';
     }),
     ScheduleModule.forRoot(),
 
-    BullModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => {
-        const redisConfig = configService.get('redis');
-        return {
-          connection: {
-            host: redisConfig.host,
-            port: redisConfig.port,
-          },
-        };
-      },
-      inject: [ConfigService],
-    }),
-
-    BullModule.registerQueue({ name: 'notification' }),
-
     PrismaModule,
     UtilsModule,
     UserModule,
     AuthModule,
 
-    RedisModule,
+    // RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService, SeedService],
