@@ -33,11 +33,22 @@ async function bootstrap() {
   app.useGlobalFilters(new GlobalExceptionFilter());
 
   //here add global pipe line for validation
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     whitelist: true,
+  //     forbidNonWhitelisted: true,
+  //     transform: true,
+  //   }),
+  // );
+
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
+      whitelist: true, // Remove extra properties not in DTO
+      forbidNonWhitelisted: true, // Throw error if extra properties are sent
+      transform: true, // Automatically transform payloads to DTO instances
+      transformOptions: {
+        enableImplicitConversion: true, // Converts types (like string to number)
+      },
     }),
   );
 

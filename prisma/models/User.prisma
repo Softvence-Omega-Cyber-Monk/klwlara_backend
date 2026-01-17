@@ -1,14 +1,15 @@
 model User {
-  id                String    @id @default(uuid())
-  email            String    @unique
-  phoneNumber      String       @unique  
-  password         String
-  name             String
-  timezone         DateTime?
-  verification2FA  Boolean   @default(false)
-  status           Boolean   @default(false)
-  lastActive       Boolean   @default(false)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  password    String
+  phoneNumber String
+  role        Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
 }

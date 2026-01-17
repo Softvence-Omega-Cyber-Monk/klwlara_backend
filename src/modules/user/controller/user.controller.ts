@@ -11,6 +11,7 @@ import {
   UnauthorizedException,
   UseInterceptors,
   UploadedFile,
+  Post,
 } from '@nestjs/common';
 import { UserService } from '../service/user.service';
 
@@ -24,14 +25,22 @@ import { RequestWithUser } from 'src/types/RequestWithUser';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/modules/utils/config/multer.config';
 import { ApiBody, ApiConsumes } from '@nestjs/swagger';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 @Controller('users')
-@UseGuards(JwtAuthGuard, RolesGuard)
+// @UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Post('create')
+  async create(@Body() createUserDto: CreateUserDto) {
+    const result = await this.userService.create(createUserDto);
+
+    return { message: 'User created successfully', data: result };
+  }
+
   @Get()
-  @Roles(Role.CLIENT)
+  // @Roles(Role.CLIENT)
   async findAll(@Query() query: PaginationDto) {
     const result = await this.userService.findAll({
       page: query.page ?? 1,

@@ -31,7 +31,7 @@ export async function buildJwtPayload(
   };
 
   switch (user.role) {
-    case Role.SUPPORTER: {
+    case Role.USER: {
       const supporter = await prisma.client.supporter.findUnique({
         where: { userId: user.id },
         select: { id: true },
@@ -46,15 +46,6 @@ export async function buildJwtPayload(
         select: { id: true },
       });
       if (admin) jwtPayload.adminId = admin.id;
-      break;
-    }
-
-    case Role.SUPERADMIN: {
-      const superAdmin = await prisma.client.superAdmin.findUnique({
-        where: { userId: user.id },
-        select: { id: true },
-      });
-      if (superAdmin) jwtPayload.superAdminId = superAdmin.id;
       break;
     }
 

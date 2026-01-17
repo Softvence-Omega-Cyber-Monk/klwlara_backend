@@ -21,8 +21,8 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ example: '25464654654' })
-  @IsString()
+  @ApiProperty({ example: '013453453535' })
+  @IsString() // ✅ validation decorator required
   phoneNumber: string;
 
   @ApiProperty({ example: 'password123' })
@@ -34,16 +34,6 @@ export class CreateUserDto {
   @IsEnum(Role)
   @IsOptional()
   role?: Role;
-
-  @ApiProperty({ example: 'your-client-id' })
-  @IsString()
-  clientId: string;
-
-  @ApiPropertyOptional({ type: [String], example: ['skill1', 'skill2'] })
-  @IsArray()
-  @IsString({ each: true })
-  @IsOptional()
-  skills?: string[];
 }
 
 export class UserFilterDto {

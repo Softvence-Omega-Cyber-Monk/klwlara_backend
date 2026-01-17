@@ -10,7 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
 // import { RedisModule } from './common/db/redis/redis.module';
 
 import { ScheduleModule } from '@nestjs/schedule';
-import { SeedService } from './common/seed/seed.services';
+// import { SeedService } from './common/seed/seed.services';
 
 @Module({
   imports: [
@@ -28,6 +28,10 @@ import { SeedService } from './common/seed/seed.services';
     // RedisModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService, SeedService],
+  providers: [
+    AppService,
+    ConfigService,
+    // SeedService
+  ],
 })
 export class AppModule {}

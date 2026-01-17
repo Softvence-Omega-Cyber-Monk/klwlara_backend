@@ -61,6 +61,30 @@ export class UserService {
     }
   }
 
+  async create(createUserDto: CreateUserDto) {
+    console.log('user data ', createUserDto);
+    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+
+    // Map incoming string to Prisma enum
+    const role: Role =
+      createUserDto.role?.toUpperCase() === 'admin' ? Role.ADMIN : Role.USER;
+
+    const result = await this.prisma.client.user.create({
+      data: {
+        name: createUserDto.name,
+        email: createUserDto.email,
+        password: hashedPassword,
+        phoneNumber: createUserDto.phoneNumber,
+        role, // ✅ now it's properly typed
+      },
+    });
+
+    console.log('result', result);
+
+    const { password, ...safeUser } = result;
+    return safeUser;
+  }
+
   async findAll(
     query: { page: number; limit: number } = { page: 1, limit: 10 },
   ): Promise<PaginatedResult<any>> {
