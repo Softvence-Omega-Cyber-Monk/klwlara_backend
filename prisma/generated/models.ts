@@ -8,16 +8,5 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/OtpVerification'
-export type * from './models/Payment'
-export type * from './models/Notification'
-export type * from './models/NotificationProvision'
-export type * from './models/NotificationPermissionSupporter'
-export type * from './models/NotificationPermissionAdmin'
-export type * from './models/NotificationPermissionSuperAdmin'
-export type * from './models/SuperAdmin'
-export type * from './models/Supporter'
-export type * from './models/Ticket'
 export type * from './models/User'
-export type * from './models/Admin'
 export type * from './commonInputTypes'

@@ -6,7 +6,6 @@ import {
   IsString,
 } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Language } from 'generated/prisma';
 import { Transform } from 'class-transformer';
 
 export class UpdateUserDto {
@@ -17,15 +16,6 @@ export class UpdateUserDto {
   })
   @IsOptional()
   profileImage?: string;
-
-  @ApiPropertyOptional({
-    example: 'EN',
-    description: 'Preferred language of the user',
-    enum: Language,
-  })
-  @IsEnum(Language)
-  @IsOptional()
-  language?: Language;
 
   @ApiPropertyOptional({
     example: '2025-11-13T10:00:00Z',

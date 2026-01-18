@@ -18,62 +18,7 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model OtpVerification
- * 
- */
-export type OtpVerification = Prisma.OtpVerificationModel
-/**
- * Model Payment
- * 
- */
-export type Payment = Prisma.PaymentModel
-/**
- * Model Notification
- * 
- */
-export type Notification = Prisma.NotificationModel
-/**
- * Model NotificationProvision
- * 
- */
-export type NotificationProvision = Prisma.NotificationProvisionModel
-/**
- * Model NotificationPermissionSupporter
- * 
- */
-export type NotificationPermissionSupporter = Prisma.NotificationPermissionSupporterModel
-/**
- * Model NotificationPermissionAdmin
- * 
- */
-export type NotificationPermissionAdmin = Prisma.NotificationPermissionAdminModel
-/**
- * Model NotificationPermissionSuperAdmin
- * 
- */
-export type NotificationPermissionSuperAdmin = Prisma.NotificationPermissionSuperAdminModel
-/**
- * Model SuperAdmin
- * 
- */
-export type SuperAdmin = Prisma.SuperAdminModel
-/**
- * Model Supporter
- * 
- */
-export type Supporter = Prisma.SupporterModel
-/**
- * Model Ticket
- * 
- */
-export type Ticket = Prisma.TicketModel
-/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
-/**
- * Model Admin
- * 
- */
-export type Admin = Prisma.AdminModel

@@ -26,112 +26,70 @@ export type AggregateUser = {
 
 export type UserMinAggregateOutputType = {
   id: string | null
-  email: string | null
-  phoneNumber: string | null
-  password: string | null
   name: string | null
+  email: string | null
+  password: string | null
+  phoneNumber: string | null
   role: $Enums.Role | null
-  profileImage: string | null
-  language: $Enums.Language | null
-  timezone: Date | null
-  verification2FA: boolean | null
-  status: boolean | null
-  lastActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  userStatus: $Enums.UserStatus | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
-  email: string | null
-  phoneNumber: string | null
-  password: string | null
   name: string | null
+  email: string | null
+  password: string | null
+  phoneNumber: string | null
   role: $Enums.Role | null
-  profileImage: string | null
-  language: $Enums.Language | null
-  timezone: Date | null
-  verification2FA: boolean | null
-  status: boolean | null
-  lastActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
-  userStatus: $Enums.UserStatus | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
-  email: number
-  phoneNumber: number
-  password: number
   name: number
+  email: number
+  password: number
+  phoneNumber: number
   role: number
-  profileImage: number
-  language: number
-  timezone: number
-  verification2FA: number
-  status: number
-  lastActive: number
   createdAt: number
   updatedAt: number
-  userStatus: number
   _all: number
 }
 
 
 export type UserMinAggregateInputType = {
   id?: true
-  email?: true
-  phoneNumber?: true
-  password?: true
   name?: true
+  email?: true
+  password?: true
+  phoneNumber?: true
   role?: true
-  profileImage?: true
-  language?: true
-  timezone?: true
-  verification2FA?: true
-  status?: true
-  lastActive?: true
   createdAt?: true
   updatedAt?: true
-  userStatus?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
-  email?: true
-  phoneNumber?: true
-  password?: true
   name?: true
+  email?: true
+  password?: true
+  phoneNumber?: true
   role?: true
-  profileImage?: true
-  language?: true
-  timezone?: true
-  verification2FA?: true
-  status?: true
-  lastActive?: true
   createdAt?: true
   updatedAt?: true
-  userStatus?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
-  email?: true
-  phoneNumber?: true
-  password?: true
   name?: true
+  email?: true
+  password?: true
+  phoneNumber?: true
   role?: true
-  profileImage?: true
-  language?: true
-  timezone?: true
-  verification2FA?: true
-  status?: true
-  lastActive?: true
   createdAt?: true
   updatedAt?: true
-  userStatus?: true
   _all?: true
 }
 
@@ -209,20 +167,13 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: string
-  email: string
-  phoneNumber: string
-  password: string
   name: string
+  email: string
+  password: string
+  phoneNumber: string
   role: $Enums.Role
-  profileImage: string | null
-  language: $Enums.Language
-  timezone: Date | null
-  verification2FA: boolean
-  status: boolean
-  lastActive: boolean
   createdAt: Date
   updatedAt: Date
-  userStatus: $Enums.UserStatus
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -248,104 +199,49 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
-  email?: Prisma.StringFilter<"User"> | string
-  phoneNumber?: Prisma.StringFilter<"User"> | string
-  password?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringFilter<"User"> | string
+  email?: Prisma.StringFilter<"User"> | string
+  password?: Prisma.StringFilter<"User"> | string
+  phoneNumber?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  profileImage?: Prisma.StringNullableFilter<"User"> | string | null
-  language?: Prisma.EnumLanguageFilter<"User"> | $Enums.Language
-  timezone?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  verification2FA?: Prisma.BoolFilter<"User"> | boolean
-  status?: Prisma.BoolFilter<"User"> | boolean
-  lastActive?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  userStatus?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
-  supporter?: Prisma.XOR<Prisma.SupporterNullableScalarRelationFilter, Prisma.SupporterWhereInput> | null
-  superAdmin?: Prisma.XOR<Prisma.SuperAdminNullableScalarRelationFilter, Prisma.SuperAdminWhereInput> | null
-  admin?: Prisma.XOR<Prisma.AdminNullableScalarRelationFilter, Prisma.AdminWhereInput> | null
-  notificationSupporter?: Prisma.XOR<Prisma.NotificationPermissionSupporterNullableScalarRelationFilter, Prisma.NotificationPermissionSupporterWhereInput> | null
-  notificationAdmin?: Prisma.XOR<Prisma.NotificationPermissionAdminNullableScalarRelationFilter, Prisma.NotificationPermissionAdminWhereInput> | null
-  notificationSuperAdmin?: Prisma.XOR<Prisma.NotificationPermissionSuperAdminNullableScalarRelationFilter, Prisma.NotificationPermissionSuperAdminWhereInput> | null
-  notifications?: Prisma.NotificationProvisionListRelationFilter
-  otpVerification?: Prisma.XOR<Prisma.OtpVerificationNullableScalarRelationFilter, Prisma.OtpVerificationWhereInput> | null
-  payments?: Prisma.PaymentListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  phoneNumber?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder
-  language?: Prisma.SortOrder
-  timezone?: Prisma.SortOrderInput | Prisma.SortOrder
-  verification2FA?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  lastActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  userStatus?: Prisma.SortOrder
-  supporter?: Prisma.SupporterOrderByWithRelationInput
-  superAdmin?: Prisma.SuperAdminOrderByWithRelationInput
-  admin?: Prisma.AdminOrderByWithRelationInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterOrderByWithRelationInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminOrderByWithRelationInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminOrderByWithRelationInput
-  notifications?: Prisma.NotificationProvisionOrderByRelationAggregateInput
-  otpVerification?: Prisma.OtpVerificationOrderByWithRelationInput
-  payments?: Prisma.PaymentOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
-  phoneNumber?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  password?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringFilter<"User"> | string
+  password?: Prisma.StringFilter<"User"> | string
+  phoneNumber?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  profileImage?: Prisma.StringNullableFilter<"User"> | string | null
-  language?: Prisma.EnumLanguageFilter<"User"> | $Enums.Language
-  timezone?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  verification2FA?: Prisma.BoolFilter<"User"> | boolean
-  status?: Prisma.BoolFilter<"User"> | boolean
-  lastActive?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  userStatus?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
-  supporter?: Prisma.XOR<Prisma.SupporterNullableScalarRelationFilter, Prisma.SupporterWhereInput> | null
-  superAdmin?: Prisma.XOR<Prisma.SuperAdminNullableScalarRelationFilter, Prisma.SuperAdminWhereInput> | null
-  admin?: Prisma.XOR<Prisma.AdminNullableScalarRelationFilter, Prisma.AdminWhereInput> | null
-  notificationSupporter?: Prisma.XOR<Prisma.NotificationPermissionSupporterNullableScalarRelationFilter, Prisma.NotificationPermissionSupporterWhereInput> | null
-  notificationAdmin?: Prisma.XOR<Prisma.NotificationPermissionAdminNullableScalarRelationFilter, Prisma.NotificationPermissionAdminWhereInput> | null
-  notificationSuperAdmin?: Prisma.XOR<Prisma.NotificationPermissionSuperAdminNullableScalarRelationFilter, Prisma.NotificationPermissionSuperAdminWhereInput> | null
-  notifications?: Prisma.NotificationProvisionListRelationFilter
-  otpVerification?: Prisma.XOR<Prisma.OtpVerificationNullableScalarRelationFilter, Prisma.OtpVerificationWhereInput> | null
-  payments?: Prisma.PaymentListRelationFilter
-}, "id" | "email" | "phoneNumber">
+}, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  phoneNumber?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrderInput | Prisma.SortOrder
-  language?: Prisma.SortOrder
-  timezone?: Prisma.SortOrderInput | Prisma.SortOrder
-  verification2FA?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  lastActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  userStatus?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -356,1645 +252,197 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
-  email?: Prisma.StringWithAggregatesFilter<"User"> | string
-  phoneNumber?: Prisma.StringWithAggregatesFilter<"User"> | string
-  password?: Prisma.StringWithAggregatesFilter<"User"> | string
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
+  email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  password?: Prisma.StringWithAggregatesFilter<"User"> | string
+  phoneNumber?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
-  profileImage?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  language?: Prisma.EnumLanguageWithAggregatesFilter<"User"> | $Enums.Language
-  timezone?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  verification2FA?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  status?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  lastActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  userStatus?: Prisma.EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
 }
 
 export type UserCreateInput = {
   id?: string
-  email: string
-  phoneNumber: string
-  password: string
   name: string
+  email: string
+  password: string
+  phoneNumber: string
   role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
-  email: string
-  phoneNumber: string
-  password: string
   name: string
+  email: string
+  password: string
+  phoneNumber: string
   role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
-  email: string
-  phoneNumber: string
-  password: string
   name: string
+  email: string
+  password: string
+  phoneNumber: string
   role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-}
-
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
-}
-
-export type UserNullableScalarRelationFilter = {
-  is?: Prisma.UserWhereInput | null
-  isNot?: Prisma.UserWhereInput | null
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  phoneNumber?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  timezone?: Prisma.SortOrder
-  verification2FA?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  lastActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  userStatus?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  phoneNumber?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  timezone?: Prisma.SortOrder
-  verification2FA?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  lastActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  userStatus?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  phoneNumber?: Prisma.SortOrder
-  password?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  password?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  profileImage?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  timezone?: Prisma.SortOrder
-  verification2FA?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  lastActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  userStatus?: Prisma.SortOrder
 }
 
-export type UserCreateNestedOneWithoutOtpVerificationInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutOtpVerificationInput, Prisma.UserUncheckedCreateWithoutOtpVerificationInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOtpVerificationInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutOtpVerificationNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutOtpVerificationInput, Prisma.UserUncheckedCreateWithoutOtpVerificationInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOtpVerificationInput
-  upsert?: Prisma.UserUpsertWithoutOtpVerificationInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOtpVerificationInput, Prisma.UserUpdateWithoutOtpVerificationInput>, Prisma.UserUncheckedUpdateWithoutOtpVerificationInput>
-}
-
-export type UserCreateNestedOneWithoutPaymentsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutPaymentsInput, Prisma.UserUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPaymentsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutPaymentsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutPaymentsInput, Prisma.UserUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPaymentsInput
-  upsert?: Prisma.UserUpsertWithoutPaymentsInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPaymentsInput, Prisma.UserUpdateWithoutPaymentsInput>, Prisma.UserUncheckedUpdateWithoutPaymentsInput>
-}
-
-export type UserCreateNestedOneWithoutNotificationsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
-  upsert?: Prisma.UserUpsertWithoutNotificationsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
-}
-
-export type UserCreateNestedOneWithoutNotificationSupporterInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationSupporterInput, Prisma.UserUncheckedCreateWithoutNotificationSupporterInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationSupporterInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutNotificationSupporterNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationSupporterInput, Prisma.UserUncheckedCreateWithoutNotificationSupporterInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationSupporterInput
-  upsert?: Prisma.UserUpsertWithoutNotificationSupporterInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationSupporterInput, Prisma.UserUpdateWithoutNotificationSupporterInput>, Prisma.UserUncheckedUpdateWithoutNotificationSupporterInput>
-}
-
-export type UserCreateNestedOneWithoutNotificationAdminInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationAdminInput, Prisma.UserUncheckedCreateWithoutNotificationAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutNotificationAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationAdminInput, Prisma.UserUncheckedCreateWithoutNotificationAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationAdminInput
-  upsert?: Prisma.UserUpsertWithoutNotificationAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationAdminInput, Prisma.UserUpdateWithoutNotificationAdminInput>, Prisma.UserUncheckedUpdateWithoutNotificationAdminInput>
-}
-
-export type UserCreateNestedOneWithoutNotificationSuperAdminInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedCreateWithoutNotificationSuperAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationSuperAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutNotificationSuperAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedCreateWithoutNotificationSuperAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationSuperAdminInput
-  upsert?: Prisma.UserUpsertWithoutNotificationSuperAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationSuperAdminInput, Prisma.UserUpdateWithoutNotificationSuperAdminInput>, Prisma.UserUncheckedUpdateWithoutNotificationSuperAdminInput>
-}
-
-export type UserCreateNestedOneWithoutSuperAdminInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSuperAdminInput, Prisma.UserUncheckedCreateWithoutSuperAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSuperAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutSuperAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSuperAdminInput, Prisma.UserUncheckedCreateWithoutSuperAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSuperAdminInput
-  upsert?: Prisma.UserUpsertWithoutSuperAdminInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSuperAdminInput, Prisma.UserUpdateWithoutSuperAdminInput>, Prisma.UserUncheckedUpdateWithoutSuperAdminInput>
-}
-
-export type UserCreateNestedOneWithoutSupporterInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSupporterInput, Prisma.UserUncheckedCreateWithoutSupporterInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSupporterInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutSupporterNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSupporterInput, Prisma.UserUncheckedCreateWithoutSupporterInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSupporterInput
-  upsert?: Prisma.UserUpsertWithoutSupporterInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSupporterInput, Prisma.UserUpdateWithoutSupporterInput>, Prisma.UserUncheckedUpdateWithoutSupporterInput>
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
 }
 
-export type EnumLanguageFieldUpdateOperationsInput = {
-  set?: $Enums.Language
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
-export type EnumUserStatusFieldUpdateOperationsInput = {
-  set?: $Enums.UserStatus
-}
-
-export type UserCreateNestedOneWithoutAdminInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminInput, Prisma.UserUncheckedCreateWithoutAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminInput, Prisma.UserUncheckedCreateWithoutAdminInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminInput
-  upsert?: Prisma.UserUpsertWithoutAdminInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAdminInput, Prisma.UserUpdateWithoutAdminInput>, Prisma.UserUncheckedUpdateWithoutAdminInput>
-}
-
-export type UserCreateWithoutOtpVerificationInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutOtpVerificationInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutOtpVerificationInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutOtpVerificationInput, Prisma.UserUncheckedCreateWithoutOtpVerificationInput>
-}
-
-export type UserUpsertWithoutOtpVerificationInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutOtpVerificationInput, Prisma.UserUncheckedUpdateWithoutOtpVerificationInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutOtpVerificationInput, Prisma.UserUncheckedCreateWithoutOtpVerificationInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutOtpVerificationInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutOtpVerificationInput, Prisma.UserUncheckedUpdateWithoutOtpVerificationInput>
-}
-
-export type UserUpdateWithoutOtpVerificationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutOtpVerificationInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutPaymentsInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutPaymentsInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutPaymentsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutPaymentsInput, Prisma.UserUncheckedCreateWithoutPaymentsInput>
-}
-
-export type UserUpsertWithoutPaymentsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutPaymentsInput, Prisma.UserUncheckedUpdateWithoutPaymentsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutPaymentsInput, Prisma.UserUncheckedCreateWithoutPaymentsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutPaymentsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutPaymentsInput, Prisma.UserUncheckedUpdateWithoutPaymentsInput>
-}
-
-export type UserUpdateWithoutPaymentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutPaymentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-}
-
-export type UserCreateWithoutNotificationsInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutNotificationsInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutNotificationsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
-}
-
-export type UserUpsertWithoutNotificationsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
-}
-
-export type UserUpdateWithoutNotificationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutNotificationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutNotificationSupporterInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutNotificationSupporterInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutNotificationSupporterInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationSupporterInput, Prisma.UserUncheckedCreateWithoutNotificationSupporterInput>
-}
-
-export type UserUpsertWithoutNotificationSupporterInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationSupporterInput, Prisma.UserUncheckedUpdateWithoutNotificationSupporterInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationSupporterInput, Prisma.UserUncheckedCreateWithoutNotificationSupporterInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutNotificationSupporterInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationSupporterInput, Prisma.UserUncheckedUpdateWithoutNotificationSupporterInput>
-}
-
-export type UserUpdateWithoutNotificationSupporterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutNotificationSupporterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutNotificationAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutNotificationAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutNotificationAdminInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationAdminInput, Prisma.UserUncheckedCreateWithoutNotificationAdminInput>
-}
-
-export type UserUpsertWithoutNotificationAdminInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationAdminInput, Prisma.UserUncheckedUpdateWithoutNotificationAdminInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationAdminInput, Prisma.UserUncheckedCreateWithoutNotificationAdminInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutNotificationAdminInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationAdminInput, Prisma.UserUncheckedUpdateWithoutNotificationAdminInput>
-}
-
-export type UserUpdateWithoutNotificationAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutNotificationAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutNotificationSuperAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutNotificationSuperAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutNotificationSuperAdminInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedCreateWithoutNotificationSuperAdminInput>
-}
-
-export type UserUpsertWithoutNotificationSuperAdminInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedUpdateWithoutNotificationSuperAdminInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedCreateWithoutNotificationSuperAdminInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutNotificationSuperAdminInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationSuperAdminInput, Prisma.UserUncheckedUpdateWithoutNotificationSuperAdminInput>
-}
-
-export type UserUpdateWithoutNotificationSuperAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutNotificationSuperAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutSuperAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutSuperAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutSuperAdminInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSuperAdminInput, Prisma.UserUncheckedCreateWithoutSuperAdminInput>
-}
-
-export type UserUpsertWithoutSuperAdminInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSuperAdminInput, Prisma.UserUncheckedUpdateWithoutSuperAdminInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSuperAdminInput, Prisma.UserUncheckedCreateWithoutSuperAdminInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutSuperAdminInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSuperAdminInput, Prisma.UserUncheckedUpdateWithoutSuperAdminInput>
-}
-
-export type UserUpdateWithoutSuperAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutSuperAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutSupporterInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutSupporterInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  admin?: Prisma.AdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutSupporterInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSupporterInput, Prisma.UserUncheckedCreateWithoutSupporterInput>
-}
-
-export type UserUpsertWithoutSupporterInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSupporterInput, Prisma.UserUncheckedUpdateWithoutSupporterInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSupporterInput, Prisma.UserUncheckedCreateWithoutSupporterInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutSupporterInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSupporterInput, Prisma.UserUncheckedUpdateWithoutSupporterInput>
-}
-
-export type UserUpdateWithoutSupporterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutSupporterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  admin?: Prisma.AdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutAdminInput = {
-  id?: string
-  email: string
-  phoneNumber: string
-  password: string
-  name: string
-  role?: $Enums.Role
-  profileImage?: string | null
-  language?: $Enums.Language
-  timezone?: Date | string | null
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userStatus?: $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedCreateNestedOneWithoutUserInput
-  superAdmin?: Prisma.SuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedCreateNestedOneWithoutUserInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedCreateNestedOneWithoutUserInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationProvisionUncheckedCreateNestedManyWithoutUserInput
-  otpVerification?: Prisma.OtpVerificationUncheckedCreateNestedOneWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutAdminInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutAdminInput, Prisma.UserUncheckedCreateWithoutAdminInput>
-}
-
-export type UserUpsertWithoutAdminInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutAdminInput, Prisma.UserUncheckedUpdateWithoutAdminInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutAdminInput, Prisma.UserUncheckedCreateWithoutAdminInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutAdminInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutAdminInput, Prisma.UserUncheckedUpdateWithoutAdminInput>
-}
-
-export type UserUpdateWithoutAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutAdminInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.EnumLanguageFieldUpdateOperationsInput | $Enums.Language
-  timezone?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  verification2FA?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userStatus?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  supporter?: Prisma.SupporterUncheckedUpdateOneWithoutUserNestedInput
-  superAdmin?: Prisma.SuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSupporter?: Prisma.NotificationPermissionSupporterUncheckedUpdateOneWithoutUserNestedInput
-  notificationAdmin?: Prisma.NotificationPermissionAdminUncheckedUpdateOneWithoutUserNestedInput
-  notificationSuperAdmin?: Prisma.NotificationPermissionSuperAdminUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationProvisionUncheckedUpdateManyWithoutUserNestedInput
-  otpVerification?: Prisma.OtpVerificationUncheckedUpdateOneWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-
-/**
- * Count Type UserCountOutputType
- */
-
-export type UserCountOutputType = {
-  notifications: number
-  payments: number
-}
-
-export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
-  payments?: boolean | UserCountOutputTypeCountPaymentsArgs
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserCountOutputType
-   */
-  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.NotificationProvisionWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PaymentWhereInput
-}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  email?: boolean
-  phoneNumber?: boolean
-  password?: boolean
   name?: boolean
+  email?: boolean
+  password?: boolean
+  phoneNumber?: boolean
   role?: boolean
-  profileImage?: boolean
-  language?: boolean
-  timezone?: boolean
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  userStatus?: boolean
-  supporter?: boolean | Prisma.User$supporterArgs<ExtArgs>
-  superAdmin?: boolean | Prisma.User$superAdminArgs<ExtArgs>
-  admin?: boolean | Prisma.User$adminArgs<ExtArgs>
-  notificationSupporter?: boolean | Prisma.User$notificationSupporterArgs<ExtArgs>
-  notificationAdmin?: boolean | Prisma.User$notificationAdminArgs<ExtArgs>
-  notificationSuperAdmin?: boolean | Prisma.User$notificationSuperAdminArgs<ExtArgs>
-  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
-  otpVerification?: boolean | Prisma.User$otpVerificationArgs<ExtArgs>
-  payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
-  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  email?: boolean
-  phoneNumber?: boolean
-  password?: boolean
   name?: boolean
+  email?: boolean
+  password?: boolean
+  phoneNumber?: boolean
   role?: boolean
-  profileImage?: boolean
-  language?: boolean
-  timezone?: boolean
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  userStatus?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  email?: boolean
-  phoneNumber?: boolean
-  password?: boolean
   name?: boolean
+  email?: boolean
+  password?: boolean
+  phoneNumber?: boolean
   role?: boolean
-  profileImage?: boolean
-  language?: boolean
-  timezone?: boolean
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  userStatus?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
-  email?: boolean
-  phoneNumber?: boolean
-  password?: boolean
   name?: boolean
+  email?: boolean
+  password?: boolean
+  phoneNumber?: boolean
   role?: boolean
-  profileImage?: boolean
-  language?: boolean
-  timezone?: boolean
-  verification2FA?: boolean
-  status?: boolean
-  lastActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  userStatus?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phoneNumber" | "password" | "name" | "role" | "profileImage" | "language" | "timezone" | "verification2FA" | "status" | "lastActive" | "createdAt" | "updatedAt" | "userStatus", ExtArgs["result"]["user"]>
-export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  supporter?: boolean | Prisma.User$supporterArgs<ExtArgs>
-  superAdmin?: boolean | Prisma.User$superAdminArgs<ExtArgs>
-  admin?: boolean | Prisma.User$adminArgs<ExtArgs>
-  notificationSupporter?: boolean | Prisma.User$notificationSupporterArgs<ExtArgs>
-  notificationAdmin?: boolean | Prisma.User$notificationAdminArgs<ExtArgs>
-  notificationSuperAdmin?: boolean | Prisma.User$notificationSuperAdminArgs<ExtArgs>
-  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
-  otpVerification?: boolean | Prisma.User$otpVerificationArgs<ExtArgs>
-  payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
-  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
-}
-export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "phoneNumber" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {
-    supporter: Prisma.$SupporterPayload<ExtArgs> | null
-    superAdmin: Prisma.$SuperAdminPayload<ExtArgs> | null
-    admin: Prisma.$AdminPayload<ExtArgs> | null
-    notificationSupporter: Prisma.$NotificationPermissionSupporterPayload<ExtArgs> | null
-    notificationAdmin: Prisma.$NotificationPermissionAdminPayload<ExtArgs> | null
-    notificationSuperAdmin: Prisma.$NotificationPermissionSuperAdminPayload<ExtArgs> | null
-    notifications: Prisma.$NotificationProvisionPayload<ExtArgs>[]
-    otpVerification: Prisma.$OtpVerificationPayload<ExtArgs> | null
-    payments: Prisma.$PaymentPayload<ExtArgs>[]
-  }
+  objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    email: string
-    phoneNumber: string
-    password: string
     name: string
+    email: string
+    password: string
+    phoneNumber: string
     role: $Enums.Role
-    profileImage: string | null
-    language: $Enums.Language
-    timezone: Date | null
-    verification2FA: boolean
-    status: boolean
-    lastActive: boolean
     createdAt: Date
     updatedAt: Date
-    userStatus: $Enums.UserStatus
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -2389,15 +837,6 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  supporter<T extends Prisma.User$supporterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$supporterArgs<ExtArgs>>): Prisma.Prisma__SupporterClient<runtime.Types.Result.GetResult<Prisma.$SupporterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  superAdmin<T extends Prisma.User$superAdminArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$superAdminArgs<ExtArgs>>): Prisma.Prisma__SuperAdminClient<runtime.Types.Result.GetResult<Prisma.$SuperAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  admin<T extends Prisma.User$adminArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$adminArgs<ExtArgs>>): Prisma.Prisma__AdminClient<runtime.Types.Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  notificationSupporter<T extends Prisma.User$notificationSupporterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationSupporterArgs<ExtArgs>>): Prisma.Prisma__NotificationPermissionSupporterClient<runtime.Types.Result.GetResult<Prisma.$NotificationPermissionSupporterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  notificationAdmin<T extends Prisma.User$notificationAdminArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationAdminArgs<ExtArgs>>): Prisma.Prisma__NotificationPermissionAdminClient<runtime.Types.Result.GetResult<Prisma.$NotificationPermissionAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  notificationSuperAdmin<T extends Prisma.User$notificationSuperAdminArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationSuperAdminArgs<ExtArgs>>): Prisma.Prisma__NotificationPermissionSuperAdminClient<runtime.Types.Result.GetResult<Prisma.$NotificationPermissionSuperAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationProvisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  otpVerification<T extends Prisma.User$otpVerificationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$otpVerificationArgs<ExtArgs>>): Prisma.Prisma__OtpVerificationClient<runtime.Types.Result.GetResult<Prisma.$OtpVerificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  payments<T extends Prisma.User$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2428,20 +867,13 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
-  readonly email: Prisma.FieldRef<"User", 'String'>
-  readonly phoneNumber: Prisma.FieldRef<"User", 'String'>
-  readonly password: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
+  readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly password: Prisma.FieldRef<"User", 'String'>
+  readonly phoneNumber: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
-  readonly profileImage: Prisma.FieldRef<"User", 'String'>
-  readonly language: Prisma.FieldRef<"User", 'Language'>
-  readonly timezone: Prisma.FieldRef<"User", 'DateTime'>
-  readonly verification2FA: Prisma.FieldRef<"User", 'Boolean'>
-  readonly status: Prisma.FieldRef<"User", 'Boolean'>
-  readonly lastActive: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
-  readonly userStatus: Prisma.FieldRef<"User", 'UserStatus'>
 }
     
 
@@ -2458,10 +890,6 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -2481,10 +909,6 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -2502,10 +926,6 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -2555,10 +975,6 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -2607,10 +1023,6 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -2653,10 +1065,6 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to create a User.
    */
@@ -2705,10 +1113,6 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -2776,10 +1180,6 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -2806,10 +1206,6 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -2830,187 +1226,6 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.supporter
- */
-export type User$supporterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Supporter
-   */
-  select?: Prisma.SupporterSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Supporter
-   */
-  omit?: Prisma.SupporterOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SupporterInclude<ExtArgs> | null
-  where?: Prisma.SupporterWhereInput
-}
-
-/**
- * User.superAdmin
- */
-export type User$superAdminArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SuperAdmin
-   */
-  select?: Prisma.SuperAdminSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SuperAdmin
-   */
-  omit?: Prisma.SuperAdminOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SuperAdminInclude<ExtArgs> | null
-  where?: Prisma.SuperAdminWhereInput
-}
-
-/**
- * User.admin
- */
-export type User$adminArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Admin
-   */
-  select?: Prisma.AdminSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Admin
-   */
-  omit?: Prisma.AdminOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AdminInclude<ExtArgs> | null
-  where?: Prisma.AdminWhereInput
-}
-
-/**
- * User.notificationSupporter
- */
-export type User$notificationSupporterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NotificationPermissionSupporter
-   */
-  select?: Prisma.NotificationPermissionSupporterSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the NotificationPermissionSupporter
-   */
-  omit?: Prisma.NotificationPermissionSupporterOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NotificationPermissionSupporterInclude<ExtArgs> | null
-  where?: Prisma.NotificationPermissionSupporterWhereInput
-}
-
-/**
- * User.notificationAdmin
- */
-export type User$notificationAdminArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NotificationPermissionAdmin
-   */
-  select?: Prisma.NotificationPermissionAdminSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the NotificationPermissionAdmin
-   */
-  omit?: Prisma.NotificationPermissionAdminOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NotificationPermissionAdminInclude<ExtArgs> | null
-  where?: Prisma.NotificationPermissionAdminWhereInput
-}
-
-/**
- * User.notificationSuperAdmin
- */
-export type User$notificationSuperAdminArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NotificationPermissionSuperAdmin
-   */
-  select?: Prisma.NotificationPermissionSuperAdminSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the NotificationPermissionSuperAdmin
-   */
-  omit?: Prisma.NotificationPermissionSuperAdminOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NotificationPermissionSuperAdminInclude<ExtArgs> | null
-  where?: Prisma.NotificationPermissionSuperAdminWhereInput
-}
-
-/**
- * User.notifications
- */
-export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NotificationProvision
-   */
-  select?: Prisma.NotificationProvisionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the NotificationProvision
-   */
-  omit?: Prisma.NotificationProvisionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NotificationProvisionInclude<ExtArgs> | null
-  where?: Prisma.NotificationProvisionWhereInput
-  orderBy?: Prisma.NotificationProvisionOrderByWithRelationInput | Prisma.NotificationProvisionOrderByWithRelationInput[]
-  cursor?: Prisma.NotificationProvisionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.NotificationProvisionScalarFieldEnum | Prisma.NotificationProvisionScalarFieldEnum[]
-}
-
-/**
- * User.otpVerification
- */
-export type User$otpVerificationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the OtpVerification
-   */
-  select?: Prisma.OtpVerificationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the OtpVerification
-   */
-  omit?: Prisma.OtpVerificationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.OtpVerificationInclude<ExtArgs> | null
-  where?: Prisma.OtpVerificationWhereInput
-}
-
-/**
- * User.payments
- */
-export type User$paymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Payment
-   */
-  select?: Prisma.PaymentSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Payment
-   */
-  omit?: Prisma.PaymentOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PaymentInclude<ExtArgs> | null
-  where?: Prisma.PaymentWhereInput
-  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[]
-  cursor?: Prisma.PaymentWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[]
-}
-
-/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3022,8 +1237,4 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null
 }

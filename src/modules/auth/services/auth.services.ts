@@ -13,7 +13,6 @@ import { ConfigService } from '@nestjs/config';
 import { TLoginUserDto } from '../dto/auth.dto';
 import { EmailService } from 'src/modules/utils/services/emailService';
 import { JwtPayload } from 'src/types/RequestWithUser';
-import { UserStatus } from 'generated/prisma';
 import { maskEmail, maskPhone } from './utiles.services';
 import { buildJwtPayload } from '../utils/userbasetoken';
 import { resetPasswordTemplate } from 'src/modules/utils/template/resetpassowordtemplate';
@@ -32,20 +31,19 @@ export class AuthService {
 
     const user = await this.prisma.client.user.findUnique({
       where: { email },
-      include: { otpVerification: true },
     });
 
     if (!user) {
       throw new NotFoundException('This user is not found!');
     }
 
-    if (user.userStatus === UserStatus.DELETED) {
-      throw new ForbiddenException('This user is deleted!');
-    }
+    // if (user.userStatus === UserStatus.DELETED) {
+    //   throw new ForbiddenException('This user is deleted!');
+    // }
 
-    if (user.userStatus === UserStatus.BANNED) {
-      throw new ForbiddenException('This user is blocked!');
-    }
+    // if (user.userStatus === UserStatus.BANNED) {
+    //   throw new ForbiddenException('This user is blocked!');
+    // }
 
     const isPasswordMatched = await bcrypt.compare(password, user.password);
     if (!isPasswordMatched) {
@@ -53,18 +51,6 @@ export class AuthService {
     }
 
     const jwtPayload = await buildJwtPayload(this.prisma, user);
-
-    if (user.verification2FA) {
-      const email = maskEmail(user.email);
-      const phone = maskPhone(user.phoneNumber.toString());
-
-      const specialToken = this.jwtService.sign(jwtPayload, {
-        secret: this.configService.get('jwt_access_secret'),
-        expiresIn: this.configService.get('jwt_access_expires_in'),
-      });
-
-      return { email, phone, specialToken };
-    }
 
     const accessToken = this.jwtService.sign(jwtPayload, {
       secret: this.configService.get('jwt_access_secret'),
@@ -91,17 +77,17 @@ export class AuthService {
       throw new NotFoundException('This user is not found!');
     }
 
-    if (user.userStatus === UserStatus.DELETED) {
-      throw new ForbiddenException('This user is deleted!');
-    }
+    // if (user.userStatus === UserStatus.DELETED) {
+    //   throw new ForbiddenException('This user is deleted!');
+    // }
 
-    if (user.userStatus === UserStatus.BANNED) {
-      throw new ForbiddenException('This user is blocked!');
-    }
+    // if (user.userStatus === UserStatus.BANNED) {
+    //   throw new ForbiddenException('This user is blocked!');
+    // }
 
-    if (user.userStatus !== UserStatus.ACTIVE) {
-      throw new ForbiddenException('Only active users can change password!');
-    }
+    // if (user.userStatus !== UserStatus.ACTIVE) {
+    //   throw new ForbiddenException('Only active users can change password!');
+    // }
 
     const isMatch = await bcrypt.compare(payload.oldPassword, user.password);
     if (!isMatch) {
@@ -142,17 +128,17 @@ export class AuthService {
         throw new UnauthorizedException('User not found');
       }
 
-      if (user.userStatus === UserStatus.BANNED) {
-        throw new UnauthorizedException('This user is banned');
-      }
+      // if (user.userStatus === UserStatus.BANNED) {
+      //   throw new UnauthorizedException('This user is banned');
+      // }
 
-      if (user.userStatus === UserStatus.DELETED) {
-        throw new UnauthorizedException('This user account has been deleted');
-      }
+      // if (user.userStatus === UserStatus.DELETED) {
+      //   throw new UnauthorizedException('This user account has been deleted');
+      // }
 
-      if (user.userStatus !== UserStatus.ACTIVE) {
-        throw new UnauthorizedException('Only active users can refresh token');
-      }
+      // if (user.userStatus !== UserStatus.ACTIVE) {
+      //   throw new UnauthorizedException('Only active users can refresh token');
+      // }
 
       const payload = {
         userId: user.id,
@@ -180,17 +166,17 @@ export class AuthService {
       throw new NotFoundException('This user is not found!');
     }
 
-    if (user.userStatus === UserStatus.DELETED) {
-      throw new ForbiddenException('This user is deleted!');
-    }
+    // if (user.userStatus === UserStatus.DELETED) {
+    //   throw new ForbiddenException('This user is deleted!');
+    // }
 
-    if (user.userStatus === UserStatus.BANNED) {
-      throw new ForbiddenException('This user is blocked!');
-    }
+    // if (user.userStatus === UserStatus.BANNED) {
+    //   throw new ForbiddenException('This user is blocked!');
+    // }
 
-    if (user.userStatus !== UserStatus.ACTIVE) {
-      throw new ForbiddenException('Only active users can reset password!');
-    }
+    // if (user.userStatus !== UserStatus.ACTIVE) {
+    //   throw new ForbiddenException('Only active users can reset password!');
+    // }
 
     const jwtPayload = {
       userId: user.id,
@@ -239,17 +225,17 @@ export class AuthService {
       throw new NotFoundException('This user is not found!');
     }
 
-    if (user.userStatus === UserStatus.DELETED) {
-      throw new ForbiddenException('This user is deleted!');
-    }
+    // if (user.userStatus === UserStatus.DELETED) {
+    //   throw new ForbiddenException('This user is deleted!');
+    // }
 
-    if (user.userStatus === UserStatus.BANNED) {
-      throw new ForbiddenException('This user is blocked!');
-    }
+    // if (user.userStatus === UserStatus.BANNED) {
+    //   throw new ForbiddenException('This user is blocked!');
+    // }
 
-    if (user.userStatus !== UserStatus.ACTIVE) {
-      throw new ForbiddenException('Only active users can reset password!');
-    }
+    // if (user.userStatus !== UserStatus.ACTIVE) {
+    //   throw new ForbiddenException('Only active users can reset password!');
+    // }
 
     const saltRounds =
       Number(this.configService.get('bcrypt_salt_rounds')) || 10;

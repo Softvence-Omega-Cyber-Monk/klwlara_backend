@@ -29,11 +29,6 @@ export class CreateUserDto {
   @IsString()
   @MinLength(6)
   password: string;
-
-  @ApiProperty({ enum: Role, required: false })
-  @IsEnum(Role)
-  @IsOptional()
-  role?: Role;
 }
 
 export class UserFilterDto {

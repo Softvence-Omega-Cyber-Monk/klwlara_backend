@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "model OtpVerification {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  otp       String\n  expiresAt DateTime\n  verified  Boolean  @default(false)\n  createdAt DateTime @default(now())\n  user      User     @relation(fields: [email], references: [email])\n\n  @@map(\"otp_verifications\")\n}\n\nmodel Payment {\n  id            String   @id @default(uuid())\n  amount        Float\n  transactionId String   @unique\n  userId        String?\n  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)\n  createdAt     DateTime @default(now())\n  updatedAt     DateTime @updatedAt\n\n  @@map(\"payments\")\n}\n\n// Core Notification model\nmodel Notification {\n  id          String           @id @default(uuid())\n  senderId    String\n  receiverIds String[]\n  projectId   String?\n  context     String\n  type        NotificationType\n  isRead      Boolean          @default(false)\n  createdAt   DateTime         @default(now())\n  updatedAt   DateTime         @updatedAt\n\n  // Relations\n  provisions NotificationProvision[]\n\n  @@map(\"notifications\")\n}\n\n// Junction table for User-Notification many-to-many relationship\nmodel NotificationProvision {\n  userId         String\n  notificationId String\n\n  // Relations\n  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)\n  notification Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)\n\n  @@id([userId, notificationId])\n  @@map(\"notification_provisions\")\n}\n\n// Notification Permission for Supporters\nmodel NotificationPermissionSupporter {\n  id               String   @id @default(uuid())\n  userId           String   @unique\n  assignNewProject Boolean  @default(true)\n  createdAt        DateTime @default(now())\n  updatedAt        DateTime @updatedAt\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"notification_permissions_supporter\")\n}\n\n// Notification Permission for Admins\nmodel NotificationPermissionAdmin {\n  id                 String   @id @default(uuid())\n  userId             String   @unique\n  storageLimit       Boolean  @default(true)\n  receivedPayment    Boolean  @default(true)\n  createClient       Boolean  @default(true)\n  createTicket       Boolean  @default(true)\n  paymentCycleChange Boolean  @default(true)\n  createdAt          DateTime @default(now())\n  updatedAt          DateTime @updatedAt\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"notification_permissions_admin\")\n}\n\n// Notification Permission for Super Admins\nmodel NotificationPermissionSuperAdmin {\n  id              String   @id @default(uuid())\n  userId          String   @unique\n  storageLimit    Boolean  @default(true)\n  receivedPayment Boolean  @default(true)\n  createClient    Boolean  @default(true)\n  createdAt       DateTime @default(now())\n  updatedAt       DateTime @updatedAt\n\n  // Relations\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"notification_permissions_super_admin\")\n}\n\nmodel SuperAdmin {\n  id             String   @id @default(uuid())\n  userId         String?  @unique\n  clientLogo     String?\n  favicon        String?\n  primaryColor   String?\n  secondaryColor String?\n  createdAt      DateTime @default(now())\n  updatedAt      DateTime @updatedAt\n\n  // Relations\n  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)\n\n  @@map(\"super_admins\")\n}\n\nmodel Supporter {\n  id            String        @id @default(uuid())\n  userId        String?       @unique\n  supporterRole SupporterRole\n  skills        String[]\n  workload      Int? // Max number 4\n  workItems     String[]\n  createdAt     DateTime      @default(now())\n  updatedAt     DateTime      @updatedAt\n\n  // Relations\n  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)\n\n  @@map(\"supporters\")\n}\n\nmodel Ticket {\n  id           String       @id @default(uuid())\n  clientId     String\n  supporterIds String[]\n  adminIds     String[]\n  companyName  String?\n  subject      String\n  status       TicketStatus @default(OPEN)\n  priority     Priority\n  issue        String\n  adminNote    String?\n  attachFile   String?\n  issueType    IssueType\n  createdAt    DateTime     @default(now())\n  updatedAt    DateTime     @updatedAt\n\n  @@map(\"tickets\")\n}\n\nmodel User {\n  id              String     @id @default(uuid())\n  email           String     @unique\n  phoneNumber     String     @unique\n  password        String\n  name            String\n  role            Role       @default(VIEWER)\n  profileImage    String?\n  language        Language   @default(ENGLISH)\n  timezone        DateTime?\n  verification2FA Boolean    @default(false)\n  status          Boolean    @default(false)\n  lastActive      Boolean    @default(false)\n  createdAt       DateTime   @default(now())\n  updatedAt       DateTime   @updatedAt\n  userStatus      UserStatus @default(ACTIVE)\n\n  supporter              Supporter?\n  superAdmin             SuperAdmin?\n  admin                  Admin?\n  // Notification relations\n  notificationSupporter  NotificationPermissionSupporter?\n  notificationAdmin      NotificationPermissionAdmin?\n  notificationSuperAdmin NotificationPermissionSuperAdmin?\n\n  // Other relations\n  notifications   NotificationProvision[]\n  otpVerification OtpVerification?\n  payments        Payment[]\n\n  @@map(\"users\")\n}\n\nmodel Admin {\n  id     String  @id @default(uuid())\n  userId String? @unique\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relations\n  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)\n\n  @@map(\"admins\")\n}\n\nenum Role {\n  VIEWER\n  EMPLOYEE\n  SUPPORTER\n  MANAGER\n  ADMIN\n  CLIENT\n  SUPERADMIN\n}\n\nenum Language {\n  ENGLISH\n}\n\nenum BillingCycle {\n  MONTHLY\n  HALFYEARLY\n  YEARLY\n  TWOYEARLY\n  ENTERPRISE\n}\n\nenum IndustryCategory {\n  REALESTATE\n  FINANCE\n  RENEWABLE_ENERGY\n  TRAVEL_AGENCY\n  BEAUTY_AND_WELLNESS\n}\n\nenum SupporterRole {\n  CALLATTENDANCE\n  SUPPORTMANAGER\n  SALESOFFICER\n  SYSTEMENGINEER\n}\n\nenum Priority {\n  HIGH\n  MEDIUM\n  LOW\n  NORMAL\n}\n\nenum ProjectCycle {\n  WEEKLY\n  BI_WEEKLY\n  MONTHLY\n}\n\nenum ProjectStatus {\n  PENDING\n  LIVE\n  DRAFT\n  OVERDUE\n  PROBLEM\n  COMPLETED\n}\n\nenum TaskStatus {\n  INPROGRESS\n  COMPLETED\n  OVERDUE\n  NOSTART\n}\n\nenum TicketStatus {\n  OPEN\n  UNASSIGNED\n  IN_PROGRESS\n  SOLVED\n}\n\nenum IssueType {\n  LOGINFAILED\n  SYSTEMERROR\n  OTHERPROBLEM\n}\n\nenum UserStatus {\n  ACTIVE\n  BANNED\n  DELETED\n  SUSPENDED\n}\n\nenum ActivityActionType {\n  ASSIGNEE_ADDED\n  ASSIGNEE_REMOVED\n  FILE_ADDED\n  FILE_REMOVED\n  LINK_ADDED\n  LINK_REMOVED\n  DUE_DATE_CHANGED\n  PROGRESS_CHANGED\n  SUBTASK_ADDED\n  SUBTASK_REMOVED\n  STATUS_CHANGED\n  PRIORITY_CHANGED\n  COMMENT_ADDED\n  PROJECT_CREATED\n  PROJECT_UPDATED\n  TASK_CREATED\n  TASK_COMPLETED\n  GENERAL\n}\n\nenum SubmittedStatus {\n  APPROVED\n  PENDING\n  REJECTED\n}\n\nenum NotificationType {\n  NEW_EMPLOYEE_ASSIGNED\n  NEW_MANAGER_ASSIGNED\n  SUBMISSION_UPDATED_STATUS\n  PROJECT_SUBMITTED\n  PROJECT_STATUS_UPDATE\n  PROJECT_CREATED\n  REMINDER\n  SHEET_UPDATE_REQUEST\n  FILE_CREATED\n  ACTIVITY_CREATED\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n",
+  "inlineSchema": "model User {\n  id          String   @id @default(cuid())\n  name        String\n  email       String   @unique\n  password    String\n  phoneNumber String\n  role        Role     @default(USER)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"OtpVerification\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"otp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"verified\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"OtpVerificationToUser\"}],\"dbName\":\"otp_verifications\"},\"Payment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"amount\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"transactionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PaymentToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"payments\"},\"Notification\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senderId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"receiverIds\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"projectId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"context\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"NotificationType\"},{\"name\":\"isRead\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"provisions\",\"kind\":\"object\",\"type\":\"NotificationProvision\",\"relationName\":\"NotificationToNotificationProvision\"}],\"dbName\":\"notifications\"},\"NotificationProvision\":{\"fields\":[{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"notificationId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NotificationProvisionToUser\"},{\"name\":\"notification\",\"kind\":\"object\",\"type\":\"Notification\",\"relationName\":\"NotificationToNotificationProvision\"}],\"dbName\":\"notification_provisions\"},\"NotificationPermissionSupporter\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"assignNewProject\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NotificationPermissionSupporterToUser\"}],\"dbName\":\"notification_permissions_supporter\"},\"NotificationPermissionAdmin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"storageLimit\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"receivedPayment\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createClient\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createTicket\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"paymentCycleChange\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NotificationPermissionAdminToUser\"}],\"dbName\":\"notification_permissions_admin\"},\"NotificationPermissionSuperAdmin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"storageLimit\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"receivedPayment\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createClient\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"NotificationPermissionSuperAdminToUser\"}],\"dbName\":\"notification_permissions_super_admin\"},\"SuperAdmin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientLogo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"favicon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"primaryColor\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"secondaryColor\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SuperAdminToUser\"}],\"dbName\":\"super_admins\"},\"Supporter\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"supporterRole\",\"kind\":\"enum\",\"type\":\"SupporterRole\"},{\"name\":\"skills\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"workload\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"workItems\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SupporterToUser\"}],\"dbName\":\"supporters\"},\"Ticket\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"supporterIds\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"adminIds\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"companyName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subject\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"TicketStatus\"},{\"name\":\"priority\",\"kind\":\"enum\",\"type\":\"Priority\"},{\"name\":\"issue\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"adminNote\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"attachFile\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"issueType\",\"kind\":\"enum\",\"type\":\"IssueType\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"tickets\"},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"Role\"},{\"name\":\"profileImage\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"language\",\"kind\":\"enum\",\"type\":\"Language\"},{\"name\":\"timezone\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"verification2FA\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"lastActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"userStatus\",\"kind\":\"enum\",\"type\":\"UserStatus\"},{\"name\":\"supporter\",\"kind\":\"object\",\"type\":\"Supporter\",\"relationName\":\"SupporterToUser\"},{\"name\":\"superAdmin\",\"kind\":\"object\",\"type\":\"SuperAdmin\",\"relationName\":\"SuperAdminToUser\"},{\"name\":\"admin\",\"kind\":\"object\",\"type\":\"Admin\",\"relationName\":\"AdminToUser\"},{\"name\":\"notificationSupporter\",\"kind\":\"object\",\"type\":\"NotificationPermissionSupporter\",\"relationName\":\"NotificationPermissionSupporterToUser\"},{\"name\":\"notificationAdmin\",\"kind\":\"object\",\"type\":\"NotificationPermissionAdmin\",\"relationName\":\"NotificationPermissionAdminToUser\"},{\"name\":\"notificationSuperAdmin\",\"kind\":\"object\",\"type\":\"NotificationPermissionSuperAdmin\",\"relationName\":\"NotificationPermissionSuperAdminToUser\"},{\"name\":\"notifications\",\"kind\":\"object\",\"type\":\"NotificationProvision\",\"relationName\":\"NotificationProvisionToUser\"},{\"name\":\"otpVerification\",\"kind\":\"object\",\"type\":\"OtpVerification\",\"relationName\":\"OtpVerificationToUser\"},{\"name\":\"payments\",\"kind\":\"object\",\"type\":\"Payment\",\"relationName\":\"PaymentToUser\"}],\"dbName\":\"users\"},\"Admin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AdminToUser\"}],\"dbName\":\"admins\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phoneNumber\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"Role\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -58,8 +58,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more OtpVerifications
-   * const otpVerifications = await prisma.otpVerification.findMany()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -80,8 +80,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more OtpVerifications
- * const otpVerifications = await prisma.otpVerification.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -175,106 +175,6 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.otpVerification`: Exposes CRUD operations for the **OtpVerification** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more OtpVerifications
-    * const otpVerifications = await prisma.otpVerification.findMany()
-    * ```
-    */
-  get otpVerification(): Prisma.OtpVerificationDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.payment`: Exposes CRUD operations for the **Payment** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Payments
-    * const payments = await prisma.payment.findMany()
-    * ```
-    */
-  get payment(): Prisma.PaymentDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Notifications
-    * const notifications = await prisma.notification.findMany()
-    * ```
-    */
-  get notification(): Prisma.NotificationDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.notificationProvision`: Exposes CRUD operations for the **NotificationProvision** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more NotificationProvisions
-    * const notificationProvisions = await prisma.notificationProvision.findMany()
-    * ```
-    */
-  get notificationProvision(): Prisma.NotificationProvisionDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.notificationPermissionSupporter`: Exposes CRUD operations for the **NotificationPermissionSupporter** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more NotificationPermissionSupporters
-    * const notificationPermissionSupporters = await prisma.notificationPermissionSupporter.findMany()
-    * ```
-    */
-  get notificationPermissionSupporter(): Prisma.NotificationPermissionSupporterDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.notificationPermissionAdmin`: Exposes CRUD operations for the **NotificationPermissionAdmin** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more NotificationPermissionAdmins
-    * const notificationPermissionAdmins = await prisma.notificationPermissionAdmin.findMany()
-    * ```
-    */
-  get notificationPermissionAdmin(): Prisma.NotificationPermissionAdminDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.notificationPermissionSuperAdmin`: Exposes CRUD operations for the **NotificationPermissionSuperAdmin** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more NotificationPermissionSuperAdmins
-    * const notificationPermissionSuperAdmins = await prisma.notificationPermissionSuperAdmin.findMany()
-    * ```
-    */
-  get notificationPermissionSuperAdmin(): Prisma.NotificationPermissionSuperAdminDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.superAdmin`: Exposes CRUD operations for the **SuperAdmin** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SuperAdmins
-    * const superAdmins = await prisma.superAdmin.findMany()
-    * ```
-    */
-  get superAdmin(): Prisma.SuperAdminDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.supporter`: Exposes CRUD operations for the **Supporter** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Supporters
-    * const supporters = await prisma.supporter.findMany()
-    * ```
-    */
-  get supporter(): Prisma.SupporterDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.ticket`: Exposes CRUD operations for the **Ticket** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tickets
-    * const tickets = await prisma.ticket.findMany()
-    * ```
-    */
-  get ticket(): Prisma.TicketDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -283,16 +183,6 @@ export interface PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.admin`: Exposes CRUD operations for the **Admin** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Admins
-    * const admins = await prisma.admin.findMany()
-    * ```
-    */
-  get admin(): Prisma.AdminDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

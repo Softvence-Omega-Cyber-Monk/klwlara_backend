@@ -51,18 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  OtpVerification: 'OtpVerification',
-  Payment: 'Payment',
-  Notification: 'Notification',
-  NotificationProvision: 'NotificationProvision',
-  NotificationPermissionSupporter: 'NotificationPermissionSupporter',
-  NotificationPermissionAdmin: 'NotificationPermissionAdmin',
-  NotificationPermissionSuperAdmin: 'NotificationPermissionSuperAdmin',
-  SuperAdmin: 'SuperAdmin',
-  Supporter: 'Supporter',
-  Ticket: 'Ticket',
-  User: 'User',
-  Admin: 'Admin'
+  User: 'User'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -81,169 +70,18 @@ export const TransactionIsolationLevel = {
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const OtpVerificationScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  otp: 'otp',
-  expiresAt: 'expiresAt',
-  verified: 'verified',
-  createdAt: 'createdAt'
-} as const
-
-export type OtpVerificationScalarFieldEnum = (typeof OtpVerificationScalarFieldEnum)[keyof typeof OtpVerificationScalarFieldEnum]
-
-
-export const PaymentScalarFieldEnum = {
-  id: 'id',
-  amount: 'amount',
-  transactionId: 'transactionId',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
-
-
-export const NotificationScalarFieldEnum = {
-  id: 'id',
-  senderId: 'senderId',
-  receiverIds: 'receiverIds',
-  projectId: 'projectId',
-  context: 'context',
-  type: 'type',
-  isRead: 'isRead',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
-
-
-export const NotificationProvisionScalarFieldEnum = {
-  userId: 'userId',
-  notificationId: 'notificationId'
-} as const
-
-export type NotificationProvisionScalarFieldEnum = (typeof NotificationProvisionScalarFieldEnum)[keyof typeof NotificationProvisionScalarFieldEnum]
-
-
-export const NotificationPermissionSupporterScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  assignNewProject: 'assignNewProject',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type NotificationPermissionSupporterScalarFieldEnum = (typeof NotificationPermissionSupporterScalarFieldEnum)[keyof typeof NotificationPermissionSupporterScalarFieldEnum]
-
-
-export const NotificationPermissionAdminScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  storageLimit: 'storageLimit',
-  receivedPayment: 'receivedPayment',
-  createClient: 'createClient',
-  createTicket: 'createTicket',
-  paymentCycleChange: 'paymentCycleChange',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type NotificationPermissionAdminScalarFieldEnum = (typeof NotificationPermissionAdminScalarFieldEnum)[keyof typeof NotificationPermissionAdminScalarFieldEnum]
-
-
-export const NotificationPermissionSuperAdminScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  storageLimit: 'storageLimit',
-  receivedPayment: 'receivedPayment',
-  createClient: 'createClient',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type NotificationPermissionSuperAdminScalarFieldEnum = (typeof NotificationPermissionSuperAdminScalarFieldEnum)[keyof typeof NotificationPermissionSuperAdminScalarFieldEnum]
-
-
-export const SuperAdminScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  clientLogo: 'clientLogo',
-  favicon: 'favicon',
-  primaryColor: 'primaryColor',
-  secondaryColor: 'secondaryColor',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SuperAdminScalarFieldEnum = (typeof SuperAdminScalarFieldEnum)[keyof typeof SuperAdminScalarFieldEnum]
-
-
-export const SupporterScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  supporterRole: 'supporterRole',
-  skills: 'skills',
-  workload: 'workload',
-  workItems: 'workItems',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SupporterScalarFieldEnum = (typeof SupporterScalarFieldEnum)[keyof typeof SupporterScalarFieldEnum]
-
-
-export const TicketScalarFieldEnum = {
-  id: 'id',
-  clientId: 'clientId',
-  supporterIds: 'supporterIds',
-  adminIds: 'adminIds',
-  companyName: 'companyName',
-  subject: 'subject',
-  status: 'status',
-  priority: 'priority',
-  issue: 'issue',
-  adminNote: 'adminNote',
-  attachFile: 'attachFile',
-  issueType: 'issueType',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type TicketScalarFieldEnum = (typeof TicketScalarFieldEnum)[keyof typeof TicketScalarFieldEnum]
-
-
 export const UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  phoneNumber: 'phoneNumber',
-  password: 'password',
   name: 'name',
+  email: 'email',
+  password: 'password',
+  phoneNumber: 'phoneNumber',
   role: 'role',
-  profileImage: 'profileImage',
-  language: 'language',
-  timezone: 'timezone',
-  verification2FA: 'verification2FA',
-  status: 'status',
-  lastActive: 'lastActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userStatus: 'userStatus'
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const AdminScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -260,12 +98,4 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

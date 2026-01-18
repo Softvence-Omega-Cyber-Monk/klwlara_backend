@@ -7,8 +7,6 @@ import { AuthController } from './controller/auth.controller';
 import { AuthService } from './services/auth.services';
 import { UserModule } from '../user/user.module';
 import { UtilsModule } from '../utils/utils.module';
-import { OtpController } from './controller/otp.controller';
-import { OtpService } from './services/otp.services';
 import { GoogleStrategy } from './utils/google.stratey';
 import { PassportModule } from '@nestjs/passport';
 
@@ -27,7 +25,7 @@ import { PassportModule } from '@nestjs/passport';
       }),
     }),
   ],
-  controllers: [AuthController, OtpController],
-  providers: [AuthService, JwtStrategy, OtpService, GoogleStrategy],
+  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy, GoogleStrategy],
 })
 export class AuthModule {}

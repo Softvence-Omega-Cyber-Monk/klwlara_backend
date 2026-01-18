@@ -65,17 +65,12 @@ export class UserService {
     console.log('user data ', createUserDto);
     const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
 
-    // Map incoming string to Prisma enum
-    const role: Role =
-      createUserDto.role?.toUpperCase() === 'admin' ? Role.ADMIN : Role.USER;
-
     const result = await this.prisma.client.user.create({
       data: {
         name: createUserDto.name,
         email: createUserDto.email,
         password: hashedPassword,
         phoneNumber: createUserDto.phoneNumber,
-        role, // ✅ now it's properly typed
       },
     });
 
@@ -138,13 +133,13 @@ export class UserService {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
 
-    if (
-      updateUserDto.profileImage &&
-      userExists.profileImage &&
-      updateUserDto.profileImage !== userExists.profileImage
-    ) {
-      deleteProfileImage(userExists.profileImage);
-    }
+    // if (
+    //   updateUserDto.profileImage &&
+    //   userExists.profileImage &&
+    //   updateUserDto.profileImage !== userExists.profileImage
+    // ) {
+    //   deleteProfileImage(userExists.profileImage);
+    // }
 
     const user = await this.prisma.client.user.update({
       where: { id },
