@@ -24,14 +24,18 @@ import { PaginationDto } from 'src/modules/utils/pagination/pagination.dto';
 import { RequestWithUser } from 'src/types/RequestWithUser';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from 'src/modules/utils/config/multer.config';
-import { ApiBody, ApiConsumes } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiConsumes } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
+import { Public } from 'src/common/jwt/public.gurad';
 
 @Controller('users')
-// @UseGuards(JwtAuthGuard, RolesGuard)
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
+  cloudinaryService: any;
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Post('create')
   async create(@Body() createUserDto: CreateUserDto) {
     const result = await this.userService.create(createUserDto);
@@ -58,32 +62,31 @@ export class UserController {
     };
   }
 
-  @Get(':id')
+  @Get('getSingleUser/:id')
   async findOne(@Param('id') id: string) {
     const result = await this.userService.findOne(id);
     return { message: 'User fetched successfully', data: result };
   }
 
-  @Patch()
-  @UseInterceptors(FileInterceptor('profileImage', multerOptions))
+  @Patch('updateUser/:id')
+  @UseInterceptors(FileInterceptor('profileImg', multerOptions))
   @ApiConsumes('multipart/form-data')
-  @ApiBody({ type: UpdateUserDto })
-  async update(
-    @Req() req: RequestWithUser,
+  async updateUser(
+    @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file?: Express.Multer.File,
   ) {
-    const userId = req.user?.userId;
-
-    if (!userId) {
-      throw new UnauthorizedException('User not found or not authenticated');
-    }
-
+    console.log('file', file);
     if (file) {
-      updateUserDto.profileImage = file.path;
+      const uploaded = await this.cloudinaryService.uploadFile(
+        file,
+        'users/profile',
+      );
+
+      updateUserDto.profileImg = uploaded.secure_url;
     }
 
-    const result = await this.userService.update(userId, updateUserDto);
+    const result = await this.userService.update(id, updateUserDto);
     return { message: 'User updated successfully', data: result };
   }
 

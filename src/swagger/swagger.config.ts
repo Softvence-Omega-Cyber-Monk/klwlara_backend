@@ -8,15 +8,5 @@ export const swaggerConfig = new DocumentBuilder()
   .setVersion('1.0')
   .addCookieAuth('refreshToken')
   .addTag('API')
-  .addApiKey(
-    {
-      type: 'apiKey',
-      name: 'authorization',
-      in: 'header',
-    },
-    'auth',
-  )
-  .addSecurityRequirements({
-    auth: [],
-  })
+  .addBearerAuth()
   .build();

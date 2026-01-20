@@ -37,20 +37,12 @@ export class AuthService {
       throw new NotFoundException('This user is not found!');
     }
 
-    // if (user.userStatus === UserStatus.DELETED) {
-    //   throw new ForbiddenException('This user is deleted!');
-    // }
-
-    // if (user.userStatus === UserStatus.BANNED) {
-    //   throw new ForbiddenException('This user is blocked!');
-    // }
-
     const isPasswordMatched = await bcrypt.compare(password, user.password);
     if (!isPasswordMatched) {
       throw new UnauthorizedException('Password does not match');
     }
 
-    const jwtPayload = await buildJwtPayload(this.prisma, user);
+    const jwtPayload = buildJwtPayload(user);
 
     const accessToken = this.jwtService.sign(jwtPayload, {
       secret: this.configService.get('jwt_access_secret'),
@@ -165,18 +157,6 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException('This user is not found!');
     }
-
-    // if (user.userStatus === UserStatus.DELETED) {
-    //   throw new ForbiddenException('This user is deleted!');
-    // }
-
-    // if (user.userStatus === UserStatus.BANNED) {
-    //   throw new ForbiddenException('This user is blocked!');
-    // }
-
-    // if (user.userStatus !== UserStatus.ACTIVE) {
-    //   throw new ForbiddenException('Only active users can reset password!');
-    // }
 
     const jwtPayload = {
       userId: user.id,

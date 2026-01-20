@@ -9,6 +9,7 @@ import { GlobalExceptionFilter } from './common/filters/global-exception.filter'
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as express from 'express';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -59,9 +60,24 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const port = config.get('port') || 3000;
   const node_env = config.get('node_env') || 'development';
-  if (node_env !== 'production') {
-    setupSwagger(app);
-  }
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Backend API Documentation')
+    .setDescription(
+      'Comprehensive API documentation for the application services',
+    )
+    .setVersion('1.0')
+    .addCookieAuth('refreshToken')
+    .addTag('API')
+    .addBearerAuth()
+    .build();
+
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('docs', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 
   await app.listen(port);
   console.log(`🚀 Application is running successfully! port number ${port}`);

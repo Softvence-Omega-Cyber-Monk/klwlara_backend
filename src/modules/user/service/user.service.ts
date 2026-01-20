@@ -14,7 +14,6 @@ import { CreateUserDto } from '../dto/create-user.dto';
 import { UploadApiResponse } from 'cloudinary';
 import { buildDynamicPrismaFilter } from 'src/modules/utils/queryBuilder/prisma-filter-builder';
 import { Role } from 'generated/prisma';
-import { ConvertEmployeeToManagerDto } from '../dto/convert-employee-to-manager.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import {
   paginate,
@@ -65,12 +64,13 @@ export class UserService {
     console.log('user data ', createUserDto);
     const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
 
+    console.log('hashedPassword', hashedPassword);
+
     const result = await this.prisma.client.user.create({
       data: {
         name: createUserDto.name,
         email: createUserDto.email,
         password: hashedPassword,
-        phoneNumber: createUserDto.phoneNumber,
       },
     });
 
@@ -129,17 +129,19 @@ export class UserService {
       where: { id },
     });
 
+    console.log('userDATA', UpdateUserDto);
+
     if (!userExists) {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
 
-    // if (
-    //   updateUserDto.profileImage &&
-    //   userExists.profileImage &&
-    //   updateUserDto.profileImage !== userExists.profileImage
-    // ) {
-    //   deleteProfileImage(userExists.profileImage);
-    // }
+    if (
+      updateUserDto.profileImg &&
+      userExists.profileImg &&
+      updateUserDto.profileImg !== userExists.profileImg
+    ) {
+      deleteProfileImage(userExists.profileImg);
+    }
 
     const user = await this.prisma.client.user.update({
       where: { id },
@@ -166,41 +168,6 @@ export class UserService {
     const { password, ...result } = user;
     return result;
   }
-
-  // async convertEmployeeToManager(employeeId: string, dto: ConvertEmployeeToManagerDto) {
-  //   return this.prisma.client.$transaction(async (prisma) => {
-  //     const user = await prisma.user.findUnique({
-  //       where: { id: employeeId },
-  //       include: { employee: true },
-  //     });
-
-  //     if (!user || !user.employee) {
-  //       throw new BadRequestException(`User with ID "${employeeId}" is not a valid employee.`);
-  //     }
-
-  //     await prisma.employee.delete({ where: { userId: employeeId } });
-
-  //     const manager = await prisma.manager.create({
-  //       data: {
-  //         userId: employeeId,
-  //         description:dto.
-  //         skills: dto.skills || [],
-  //       },
-  //     });
-
-  //     const updatedUser = await prisma.user.update({
-  //       where: { id: employeeId },
-  //       data: { role: Role.MANAGER },
-  //     });
-
-  //     const { password, ...userWithoutPassword } = updatedUser;
-
-  //     return {
-  //       ...manager,
-  //       user: userWithoutPassword,
-  //     };
-  //   });
-  // }
 
   async findAllWithFilters(dto: Record<string, any>) {
     const where = buildDynamicPrismaFilter(dto);

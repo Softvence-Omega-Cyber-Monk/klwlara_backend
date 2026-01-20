@@ -24,7 +24,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthService } from '../services/auth.services';
 import { JwtAuthGuard } from 'src/common/jwt/jwt.guard';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 
 @ApiTags('Authentication')
 @Controller('auth')
@@ -49,7 +49,7 @@ export class AuthController {
     const userData = req.user as {
       userId: string;
       role: string;
-      userEmail: string;
+      email: string;
     };
 
     if (!payload.oldPassword || !payload.newPassword) {

@@ -3,8 +3,8 @@ model User {
   name        String
   email       String   @unique
   password    String
-  phoneNumber String
   role        Role     @default(USER)
+  profileImg  String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -13,4 +13,6 @@ enum Role {
   USER
   ADMIN
 }
+
+
 

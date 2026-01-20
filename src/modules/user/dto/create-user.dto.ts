@@ -21,14 +21,22 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ example: '013453453535' })
-  @IsString() // ✅ validation decorator required
-  phoneNumber: string;
-
   @ApiProperty({ example: 'password123' })
   @IsString()
   @MinLength(6)
   password: string;
+
+  @ApiProperty({ example: 'password123' })
+  @IsString()
+  @MinLength(6)
+  confirmPassword: string;
+
+  @ApiProperty({
+    example: 'https://i.imgur.com/Go0jSVB.jpeg',
+  })
+  @IsOptional()
+  @IsString()
+  profileImg: string;
 }
 
 export class UserFilterDto {

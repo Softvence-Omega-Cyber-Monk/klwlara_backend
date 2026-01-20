@@ -1,4 +1,3 @@
-// cloudinary.provider.ts
 import { ConfigService } from '@nestjs/config';
 import {
   v2 as cloudinary,
@@ -7,38 +6,32 @@ import {
 } from 'cloudinary';
 import { Injectable } from '@nestjs/common';
 import { Readable } from 'stream';
-import { basename, extname } from 'path';
 
 @Injectable()
 export class CloudinaryService {
-  constructor(private configService: ConfigService) {
+  constructor(private readonly configService: ConfigService) {
     cloudinary.config({
-      cloud_name: this.configService.get<string>('cloudinary_cloud_name'),
-      api_key: this.configService.get<string>('cloudinary_api_key'),
-      api_secret: this.configService.get<string>('cloudinary_api_secret'),
+      cloud_name: this.configService.get('CLOUDINARY_CLOUD_NAME'),
+      api_key: this.configService.get('CLOUDINARY_API_KEY'),
+      api_secret: this.configService.get('CLOUDINARY_API_SECRET'),
     });
   }
 
   async uploadFile(
     file: Express.Multer.File,
-    folder = 'nest_uploads',
-    resourceType: 'auto' | 'image' | 'video' | 'raw' = 'auto',
+    folder = 'profiles',
   ): Promise<UploadApiResponse> {
-    const originalName = file.originalname;
-    const publicId = originalName.replace(/\s+/g, '_');
     return new Promise((resolve, reject) => {
+      console.log('file and folder ', file, folder);
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder,
-          public_id: publicId,
-          resource_type: resourceType,
-          use_filename: true,
+          resource_type: 'image',
+          unique_filename: true,
         },
         (error, result) => {
           if (error) return reject(error);
-          if (!result)
-            return reject(new Error('No result returned from Cloudinary.'));
-          resolve(result);
+          resolve(result as UploadApiResponse);
         },
       );
 
@@ -46,26 +39,18 @@ export class CloudinaryService {
     });
   }
 
-  async destroyFile(publicId: string): Promise<DeleteApiResponse> {
-    return new Promise((resolve, reject) => {
-      cloudinary.uploader.destroy(
-        publicId,
-        { resource_type: 'raw' },
-        (error, result) => {
-          if (error) return reject(error);
-          resolve(result as DeleteApiResponse);
-        },
-      );
+  async destroyFile(
+    publicId: string,
+    resourceType: 'image' | 'video' | 'raw' = 'image',
+  ): Promise<DeleteApiResponse> {
+    return cloudinary.uploader.destroy(publicId, {
+      resource_type: resourceType,
     });
   }
 
   extractPublicId(url: string): string {
-    const parts = url.split('/upload/');
-    if (parts.length < 2) return '';
-    const publicIdWithVersion = parts[1];
-    const segments = publicIdWithVersion.split('/');
-    segments.shift(); // remove version (e.g. v1749358152)
-    const publicId = decodeURIComponent(segments.join('/'));
-    return publicId;
+    // https://res.cloudinary.com/<cloud>/image/upload/v123/folder/file.jpg
+    const match = url.match(/\/upload\/v\d+\/(.+)$/);
+    return match ? match[1].replace(/\.[^/.]+$/, '') : '';
   }
 }
