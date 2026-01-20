@@ -27,13 +27,16 @@ import { multerOptions } from 'src/modules/utils/config/multer.config';
 import { ApiBearerAuth, ApiConsumes } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { Public } from 'src/common/jwt/public.gurad';
+import { CloudinaryService } from 'src/modules/utils/services/cloudinary.service';
 
 @Controller('users')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
-  cloudinaryService: any;
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly cloudinaryService: CloudinaryService,
+  ) {}
 
   @Public()
   @Post('create')
@@ -78,12 +81,12 @@ export class UserController {
   ) {
     console.log('file', file);
     if (file) {
-      const uploaded = await this.cloudinaryService.uploadFile(
+      const uploaded = await this.cloudinaryService?.uploadFile(
         file,
         'users/profile',
       );
 
-      updateUserDto.profileImg = uploaded.secure_url;
+      updateUserDto.profileImg = uploaded?.secure_url;
     }
 
     const result = await this.userService.update(id, updateUserDto);
