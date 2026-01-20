@@ -95,12 +95,4 @@ export class UserController {
     const result = await this.userService.remove(id);
     return { message: 'User deleted successfully', data: result };
   }
-
-  // @Put('employees/:id/convert-to-manager')
-  // async convertEmployeeToManager(
-  //   @Param('id') id: string,
-  //   @Body() convertDto: ConvertEmployeeToManagerDto,
-  // ) {
-  //   return this.userService.convertEmployeeToManager(id, convertDto);
-  // }
 }
