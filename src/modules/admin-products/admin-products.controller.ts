@@ -8,11 +8,12 @@ import {
   Delete,
   UseInterceptors,
   UploadedFiles,
+  Query,
 } from '@nestjs/common';
 import { AdminProductsService } from './admin-products.service';
 import { CreateAdminProductDto } from './dto/create-admin-product.dto';
 import { UpdateAdminProductDto } from './dto/update-admin-product.dto';
-import { ApiConsumes } from '@nestjs/swagger';
+import { ApiConsumes, ApiQuery } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from '../utils/config/multer.config';
 import { CloudinaryService } from '../utils/services/cloudinary.service';
@@ -45,29 +46,63 @@ export class AdminProductsController {
         .map((u) => u!.secure_url); // '!' because we filtered nulls
     }
 
-    return this.adminProductsService.create(createAdminProductDto);
+    const res = await this.adminProductsService.create(createAdminProductDto);
+    return {
+      data: res,
+      message: 'Product created successfully',
+    };
   }
 
   @Get('getAll')
-  findAll() {
-    return this.adminProductsService.findAll();
+  @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
+  @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
+  async findAll(@Query('page') page?: number, @Query('limit') limit?: number) {
+    const res = await this.adminProductsService.findAll(
+      Number(page) || 1,
+      Number(limit) || 10,
+    );
+    return { data: res, message: 'Products fetched successfully' };
   }
-
   @Get('getSingle/:id')
-  findOne(@Param('id') id: string) {
-    return this.adminProductsService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const res = await this.adminProductsService.findOne(id);
+    return { data: res, message: 'Product fetched successfully' };
   }
 
   @Patch('update/:id')
-  update(
+  @UseInterceptors(FilesInterceptor('images', 5, multerOptions))
+  @ApiConsumes('multipart/form-data')
+  async update(
     @Param('id') id: string,
     @Body() updateAdminProductDto: UpdateAdminProductDto,
+    @UploadedFiles() files?: Express.Multer.File[],
   ) {
-    return this.adminProductsService.update(id, updateAdminProductDto);
+    if (files?.length) {
+      const uploadedUrls = await Promise.all(
+        files.map((file) =>
+          this.cloudinaryService.uploadFile(file, 'products'),
+        ),
+      );
+
+      updateAdminProductDto.images = uploadedUrls
+        .filter(Boolean)
+        .map((u) => u!.secure_url);
+    }
+
+    const updatedProduct = await this.adminProductsService.update(
+      id,
+      updateAdminProductDto,
+    );
+
+    return {
+      data: updatedProduct,
+      message: 'Product updated successfully',
+    };
   }
 
   @Delete('delte/:id')
   remove(@Param('id') id: string) {
-    return this.adminProductsService.remove(id);
+    const res = this.adminProductsService.remove(id);
+    return { message: 'Product deleted successfully' };
   }
 }
