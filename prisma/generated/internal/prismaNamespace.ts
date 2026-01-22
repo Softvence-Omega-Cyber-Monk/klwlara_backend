@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  adminProduct: 'adminProduct',
   User: 'User'
 } as const
 
@@ -400,10 +401,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "adminProduct" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    adminProduct: {
+      payload: Prisma.$adminProductPayload<ExtArgs>
+      fields: Prisma.adminProductFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.adminProductFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.adminProductFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        findFirst: {
+          args: Prisma.adminProductFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.adminProductFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        findMany: {
+          args: Prisma.adminProductFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>[]
+        }
+        create: {
+          args: Prisma.adminProductCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        createMany: {
+          args: Prisma.adminProductCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.adminProductCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>[]
+        }
+        delete: {
+          args: Prisma.adminProductDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        update: {
+          args: Prisma.adminProductUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        deleteMany: {
+          args: Prisma.adminProductDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.adminProductUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.adminProductUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>[]
+        }
+        upsert: {
+          args: Prisma.adminProductUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminProductPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminProductAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminProduct>
+        }
+        groupBy: {
+          args: Prisma.adminProductGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminProductGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.adminProductCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminProductCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -517,6 +592,35 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AdminProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  sku: 'sku',
+  material: 'material',
+  location: 'location',
+  condition: 'condition',
+  isActive: 'isActive',
+  price: 'price',
+  specialPrice: 'specialPrice',
+  specialPriceFrom: 'specialPriceFrom',
+  specialPriceTo: 'specialPriceTo',
+  stockQuantity: 'stockQuantity',
+  currency: 'currency',
+  length: 'length',
+  height: 'height',
+  width: 'width',
+  weight: 'weight',
+  description: 'description',
+  sourcingStory: 'sourcingStory',
+  images: 'images',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminProductScalarFieldEnum = (typeof AdminProductScalarFieldEnum)[keyof typeof AdminProductScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -576,16 +680,37 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Role'
+ * Reference to a field of type 'ProductCategory'
  */
-export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+export type EnumProductCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductCategory'>
     
 
 
 /**
- * Reference to a field of type 'Role[]'
+ * Reference to a field of type 'ProductCategory[]'
  */
-export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+export type ListEnumProductCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -614,6 +739,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Role'
+ */
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+/**
+ * Reference to a field of type 'Role[]'
+ */
+export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
     
 
 /**
@@ -711,6 +850,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  adminProduct?: Prisma.adminProductOmit
   user?: Prisma.UserOmit
 }
 

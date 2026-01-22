@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const ProductCategory = {
+  NEW_ITEM: 'NEW_ITEM',
+  VINTAGE_AND_SOURCED: 'VINTAGE_AND_SOURCED'
+} as const
+
+export type ProductCategory = (typeof ProductCategory)[keyof typeof ProductCategory]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'

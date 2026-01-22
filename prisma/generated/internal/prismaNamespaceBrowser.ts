@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  adminProduct: 'adminProduct',
   User: 'User'
 } as const
 
@@ -68,6 +69,35 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const AdminProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  sku: 'sku',
+  material: 'material',
+  location: 'location',
+  condition: 'condition',
+  isActive: 'isActive',
+  price: 'price',
+  specialPrice: 'specialPrice',
+  specialPriceFrom: 'specialPriceFrom',
+  specialPriceTo: 'specialPriceTo',
+  stockQuantity: 'stockQuantity',
+  currency: 'currency',
+  length: 'length',
+  height: 'height',
+  width: 'width',
+  weight: 'weight',
+  description: 'description',
+  sourcingStory: 'sourcingStory',
+  images: 'images',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminProductScalarFieldEnum = (typeof AdminProductScalarFieldEnum)[keyof typeof AdminProductScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

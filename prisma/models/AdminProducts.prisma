@@ -1,0 +1,36 @@
+enum ProductCategory {
+    NEW_ITEM
+    VINTAGE_AND_SOURCED
+}
+
+model AdminProduct {
+    id        String          @id @default(cuid())
+    name      String
+    category  ProductCategory
+    sku       String          @unique
+    material  String?
+    location  String?
+    condition String?
+    isActive  Boolean         @default(true)
+
+    price            Float
+    specialPrice     Float?
+    specialPriceFrom DateTime?
+    specialPriceTo   DateTime?
+
+    stockQuantity Int
+    currency      String @default("USD")
+
+    length Float?
+    height Float?
+    width  Float?
+    weight Float?
+
+    description   String?
+    sourcingStory String?
+
+    images String[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

@@ -13,6 +13,7 @@ export class PrismaService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(PrismaService.name);
   private readonly prisma: PrismaClient;
   private readonly connectionString: string;
+  adminProduct: any;
 
   constructor(private readonly configService: ConfigService) {
     this.connectionString =
