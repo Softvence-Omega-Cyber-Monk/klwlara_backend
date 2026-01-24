@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAdminProductDto } from './dto/create-admin-product.dto';
 import { UpdateAdminProductDto } from './dto/update-admin-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma } from 'generated/prisma';
+import { Prisma, ProductCategory } from 'generated/prisma';
 
 @Injectable()
 export class AdminProductsService {
@@ -18,18 +18,42 @@ export class AdminProductsService {
     return product;
   }
 
-  async findAll(page = 1, limit = 10) {
+  async findAll(params: {
+    page: number;
+    limit: number;
+    search?: string;
+    category?: ProductCategory;
+    isActive?: boolean;
+  }) {
+    const { page, limit, search, category, isActive } = params;
+
     const skip = (page - 1) * limit;
+
+    const where: any = {};
+
+    if (search) {
+      where.OR = [
+        { name: { contains: search, mode: 'insensitive' } },
+        { sku: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    if (category) {
+      where.category = category;
+    }
+
+    if (typeof isActive === 'boolean') {
+      where.isActive = isActive;
+    }
 
     const [data, total] = await Promise.all([
       this.prisma.client.adminProduct.findMany({
+        where,
         skip,
         take: limit,
-        orderBy: {
-          createdAt: 'desc', // optional but recommended
-        },
+        orderBy: { createdAt: 'desc' },
       }),
-      this.prisma.client.adminProduct.count(),
+      this.prisma.client.adminProduct.count({ where }),
     ]);
 
     return {
@@ -73,13 +97,23 @@ export class AdminProductsService {
     }
   }
 
-  async remove(id: string) {
-    try {
-      return await this.prisma.client.adminProduct.delete({
-        where: { id },
-      });
-    } catch (error) {
-      throw new NotFoundException(`Product with ID ${id} not found`);
+  async removeMultiple(ids: string[]) {
+    if (!ids || ids.length === 0) {
+      throw new Error('No product IDs provided');
     }
+
+    const result = await this.prisma.client.adminProduct.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
+
+    if (result.count === 0) {
+      throw new NotFoundException('No products found to delete');
+    }
+
+    return result; // { count: number }
   }
 }

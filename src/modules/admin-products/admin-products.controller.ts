@@ -17,6 +17,8 @@ import { ApiConsumes, ApiQuery } from '@nestjs/swagger';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { multerOptions } from '../utils/config/multer.config';
 import { CloudinaryService } from '../utils/services/cloudinary.service';
+import { ProductCategory } from 'generated/prisma';
+import { DeleteMultipleProductsDto } from './dto/delete-multiple-product.dto';
 
 @Controller('admin-products')
 export class AdminProductsController {
@@ -52,17 +54,41 @@ export class AdminProductsController {
       message: 'Product created successfully',
     };
   }
-
   @Get('getAll')
   @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
   @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
-  async findAll(@Query('page') page?: number, @Query('limit') limit?: number) {
-    const res = await this.adminProductsService.findAll(
-      Number(page) || 1,
-      Number(limit) || 10,
-    );
-    return { data: res, message: 'Products fetched successfully' };
+  @ApiQuery({ name: 'search', required: false, type: String })
+  @ApiQuery({
+    name: 'category',
+    required: false,
+    enum: ProductCategory,
+  })
+  @ApiQuery({
+    name: 'isActive',
+    required: false,
+    type: Boolean,
+  })
+  async findAll(
+    @Query('page') page?: number,
+    @Query('limit') limit?: number,
+    @Query('search') search?: string,
+    @Query('category') category?: ProductCategory,
+    @Query('isActive') isActive?: string,
+  ) {
+    const result = await this.adminProductsService.findAll({
+      page: Number(page) || 1,
+      limit: Number(limit) || 10,
+      search,
+      category,
+      isActive: isActive === undefined ? undefined : isActive === 'true',
+    });
+
+    return {
+      message: 'Products fetched successfully',
+      ...result,
+    };
   }
+
   @Get('getSingle/:id')
   async findOne(@Param('id') id: string) {
     const res = await this.adminProductsService.findOne(id);
@@ -99,10 +125,13 @@ export class AdminProductsController {
       message: 'Product updated successfully',
     };
   }
+  @Delete('delete-multiple')
+  async removeMultiple(@Body() body: DeleteMultipleProductsDto) {
+    const result = await this.adminProductsService.removeMultiple(body.ids);
 
-  @Delete('delte/:id')
-  remove(@Param('id') id: string) {
-    const res = this.adminProductsService.remove(id);
-    return { message: 'Product deleted successfully' };
+    return {
+      message: 'Products deleted successfully',
+      deletedCount: result.count,
+    };
   }
 }
