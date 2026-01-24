@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `adminProduct` model and its related types.
+ * This file exports the `AdminProduct` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model adminProduct
+ * Model AdminProduct
  * 
  */
-export type adminProductModel = runtime.Types.Result.DefaultSelection<Prisma.$adminProductPayload>
+export type AdminProductModel = runtime.Types.Result.DefaultSelection<Prisma.$AdminProductPayload>
 
 export type AggregateAdminProduct = {
   _count: AdminProductCountAggregateOutputType | null
@@ -223,37 +223,37 @@ export type AdminProductCountAggregateInputType = {
 
 export type AdminProductAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which adminProduct to aggregate.
+   * Filter which AdminProduct to aggregate.
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of adminProducts to fetch.
+   * Determine the order of AdminProducts to fetch.
    */
-  orderBy?: Prisma.adminProductOrderByWithRelationInput | Prisma.adminProductOrderByWithRelationInput[]
+  orderBy?: Prisma.AdminProductOrderByWithRelationInput | Prisma.AdminProductOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.adminProductWhereUniqueInput
+  cursor?: Prisma.AdminProductWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` adminProducts from the position of the cursor.
+   * Take `±n` AdminProducts from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` adminProducts.
+   * Skip the first `n` AdminProducts.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned adminProducts
+   * Count returned AdminProducts
   **/
   _count?: true | AdminProductCountAggregateInputType
   /**
@@ -293,11 +293,11 @@ export type GetAdminProductAggregateType<T extends AdminProductAggregateArgs> = 
 
 
 
-export type adminProductGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.adminProductWhereInput
-  orderBy?: Prisma.adminProductOrderByWithAggregationInput | Prisma.adminProductOrderByWithAggregationInput[]
+export type AdminProductGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AdminProductWhereInput
+  orderBy?: Prisma.AdminProductOrderByWithAggregationInput | Prisma.AdminProductOrderByWithAggregationInput[]
   by: Prisma.AdminProductScalarFieldEnum[] | Prisma.AdminProductScalarFieldEnum
-  having?: Prisma.adminProductScalarWhereWithAggregatesInput
+  having?: Prisma.AdminProductScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: AdminProductCountAggregateInputType | true
@@ -338,7 +338,7 @@ export type AdminProductGroupByOutputType = {
   _max: AdminProductMaxAggregateOutputType | null
 }
 
-type GetAdminProductGroupByPayload<T extends adminProductGroupByArgs> = Prisma.PrismaPromise<
+type GetAdminProductGroupByPayload<T extends AdminProductGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AdminProductGroupByOutputType, T['by']> &
       {
@@ -353,36 +353,36 @@ type GetAdminProductGroupByPayload<T extends adminProductGroupByArgs> = Prisma.P
 
 
 
-export type adminProductWhereInput = {
-  AND?: Prisma.adminProductWhereInput | Prisma.adminProductWhereInput[]
-  OR?: Prisma.adminProductWhereInput[]
-  NOT?: Prisma.adminProductWhereInput | Prisma.adminProductWhereInput[]
-  id?: Prisma.StringFilter<"adminProduct"> | string
-  name?: Prisma.StringFilter<"adminProduct"> | string
-  category?: Prisma.EnumProductCategoryFilter<"adminProduct"> | $Enums.ProductCategory
-  sku?: Prisma.StringFilter<"adminProduct"> | string
-  material?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  location?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  condition?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  isActive?: Prisma.BoolFilter<"adminProduct"> | boolean
-  price?: Prisma.FloatFilter<"adminProduct"> | number
-  specialPrice?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  specialPriceFrom?: Prisma.DateTimeNullableFilter<"adminProduct"> | Date | string | null
-  specialPriceTo?: Prisma.DateTimeNullableFilter<"adminProduct"> | Date | string | null
-  stockQuantity?: Prisma.IntFilter<"adminProduct"> | number
-  currency?: Prisma.StringFilter<"adminProduct"> | string
-  length?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  height?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  width?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  weight?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  description?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  sourcingStory?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  images?: Prisma.StringNullableListFilter<"adminProduct">
-  createdAt?: Prisma.DateTimeFilter<"adminProduct"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"adminProduct"> | Date | string
+export type AdminProductWhereInput = {
+  AND?: Prisma.AdminProductWhereInput | Prisma.AdminProductWhereInput[]
+  OR?: Prisma.AdminProductWhereInput[]
+  NOT?: Prisma.AdminProductWhereInput | Prisma.AdminProductWhereInput[]
+  id?: Prisma.StringFilter<"AdminProduct"> | string
+  name?: Prisma.StringFilter<"AdminProduct"> | string
+  category?: Prisma.EnumProductCategoryFilter<"AdminProduct"> | $Enums.ProductCategory
+  sku?: Prisma.StringFilter<"AdminProduct"> | string
+  material?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  location?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  condition?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  isActive?: Prisma.BoolFilter<"AdminProduct"> | boolean
+  price?: Prisma.FloatFilter<"AdminProduct"> | number
+  specialPrice?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  specialPriceFrom?: Prisma.DateTimeNullableFilter<"AdminProduct"> | Date | string | null
+  specialPriceTo?: Prisma.DateTimeNullableFilter<"AdminProduct"> | Date | string | null
+  stockQuantity?: Prisma.IntFilter<"AdminProduct"> | number
+  currency?: Prisma.StringFilter<"AdminProduct"> | string
+  length?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  height?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  width?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  weight?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  description?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  sourcingStory?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  images?: Prisma.StringNullableListFilter<"AdminProduct">
+  createdAt?: Prisma.DateTimeFilter<"AdminProduct"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AdminProduct"> | Date | string
 }
 
-export type adminProductOrderByWithRelationInput = {
+export type AdminProductOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
@@ -408,36 +408,36 @@ export type adminProductOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type adminProductWhereUniqueInput = Prisma.AtLeast<{
+export type AdminProductWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   sku?: string
-  AND?: Prisma.adminProductWhereInput | Prisma.adminProductWhereInput[]
-  OR?: Prisma.adminProductWhereInput[]
-  NOT?: Prisma.adminProductWhereInput | Prisma.adminProductWhereInput[]
-  name?: Prisma.StringFilter<"adminProduct"> | string
-  category?: Prisma.EnumProductCategoryFilter<"adminProduct"> | $Enums.ProductCategory
-  material?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  location?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  condition?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  isActive?: Prisma.BoolFilter<"adminProduct"> | boolean
-  price?: Prisma.FloatFilter<"adminProduct"> | number
-  specialPrice?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  specialPriceFrom?: Prisma.DateTimeNullableFilter<"adminProduct"> | Date | string | null
-  specialPriceTo?: Prisma.DateTimeNullableFilter<"adminProduct"> | Date | string | null
-  stockQuantity?: Prisma.IntFilter<"adminProduct"> | number
-  currency?: Prisma.StringFilter<"adminProduct"> | string
-  length?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  height?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  width?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  weight?: Prisma.FloatNullableFilter<"adminProduct"> | number | null
-  description?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  sourcingStory?: Prisma.StringNullableFilter<"adminProduct"> | string | null
-  images?: Prisma.StringNullableListFilter<"adminProduct">
-  createdAt?: Prisma.DateTimeFilter<"adminProduct"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"adminProduct"> | Date | string
+  AND?: Prisma.AdminProductWhereInput | Prisma.AdminProductWhereInput[]
+  OR?: Prisma.AdminProductWhereInput[]
+  NOT?: Prisma.AdminProductWhereInput | Prisma.AdminProductWhereInput[]
+  name?: Prisma.StringFilter<"AdminProduct"> | string
+  category?: Prisma.EnumProductCategoryFilter<"AdminProduct"> | $Enums.ProductCategory
+  material?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  location?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  condition?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  isActive?: Prisma.BoolFilter<"AdminProduct"> | boolean
+  price?: Prisma.FloatFilter<"AdminProduct"> | number
+  specialPrice?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  specialPriceFrom?: Prisma.DateTimeNullableFilter<"AdminProduct"> | Date | string | null
+  specialPriceTo?: Prisma.DateTimeNullableFilter<"AdminProduct"> | Date | string | null
+  stockQuantity?: Prisma.IntFilter<"AdminProduct"> | number
+  currency?: Prisma.StringFilter<"AdminProduct"> | string
+  length?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  height?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  width?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  weight?: Prisma.FloatNullableFilter<"AdminProduct"> | number | null
+  description?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  sourcingStory?: Prisma.StringNullableFilter<"AdminProduct"> | string | null
+  images?: Prisma.StringNullableListFilter<"AdminProduct">
+  createdAt?: Prisma.DateTimeFilter<"AdminProduct"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AdminProduct"> | Date | string
 }, "id" | "sku">
 
-export type adminProductOrderByWithAggregationInput = {
+export type AdminProductOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
@@ -461,43 +461,43 @@ export type adminProductOrderByWithAggregationInput = {
   images?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  _count?: Prisma.adminProductCountOrderByAggregateInput
-  _avg?: Prisma.adminProductAvgOrderByAggregateInput
-  _max?: Prisma.adminProductMaxOrderByAggregateInput
-  _min?: Prisma.adminProductMinOrderByAggregateInput
-  _sum?: Prisma.adminProductSumOrderByAggregateInput
+  _count?: Prisma.AdminProductCountOrderByAggregateInput
+  _avg?: Prisma.AdminProductAvgOrderByAggregateInput
+  _max?: Prisma.AdminProductMaxOrderByAggregateInput
+  _min?: Prisma.AdminProductMinOrderByAggregateInput
+  _sum?: Prisma.AdminProductSumOrderByAggregateInput
 }
 
-export type adminProductScalarWhereWithAggregatesInput = {
-  AND?: Prisma.adminProductScalarWhereWithAggregatesInput | Prisma.adminProductScalarWhereWithAggregatesInput[]
-  OR?: Prisma.adminProductScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.adminProductScalarWhereWithAggregatesInput | Prisma.adminProductScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"adminProduct"> | string
-  name?: Prisma.StringWithAggregatesFilter<"adminProduct"> | string
-  category?: Prisma.EnumProductCategoryWithAggregatesFilter<"adminProduct"> | $Enums.ProductCategory
-  sku?: Prisma.StringWithAggregatesFilter<"adminProduct"> | string
-  material?: Prisma.StringNullableWithAggregatesFilter<"adminProduct"> | string | null
-  location?: Prisma.StringNullableWithAggregatesFilter<"adminProduct"> | string | null
-  condition?: Prisma.StringNullableWithAggregatesFilter<"adminProduct"> | string | null
-  isActive?: Prisma.BoolWithAggregatesFilter<"adminProduct"> | boolean
-  price?: Prisma.FloatWithAggregatesFilter<"adminProduct"> | number
-  specialPrice?: Prisma.FloatNullableWithAggregatesFilter<"adminProduct"> | number | null
-  specialPriceFrom?: Prisma.DateTimeNullableWithAggregatesFilter<"adminProduct"> | Date | string | null
-  specialPriceTo?: Prisma.DateTimeNullableWithAggregatesFilter<"adminProduct"> | Date | string | null
-  stockQuantity?: Prisma.IntWithAggregatesFilter<"adminProduct"> | number
-  currency?: Prisma.StringWithAggregatesFilter<"adminProduct"> | string
-  length?: Prisma.FloatNullableWithAggregatesFilter<"adminProduct"> | number | null
-  height?: Prisma.FloatNullableWithAggregatesFilter<"adminProduct"> | number | null
-  width?: Prisma.FloatNullableWithAggregatesFilter<"adminProduct"> | number | null
-  weight?: Prisma.FloatNullableWithAggregatesFilter<"adminProduct"> | number | null
-  description?: Prisma.StringNullableWithAggregatesFilter<"adminProduct"> | string | null
-  sourcingStory?: Prisma.StringNullableWithAggregatesFilter<"adminProduct"> | string | null
-  images?: Prisma.StringNullableListFilter<"adminProduct">
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"adminProduct"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"adminProduct"> | Date | string
+export type AdminProductScalarWhereWithAggregatesInput = {
+  AND?: Prisma.AdminProductScalarWhereWithAggregatesInput | Prisma.AdminProductScalarWhereWithAggregatesInput[]
+  OR?: Prisma.AdminProductScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.AdminProductScalarWhereWithAggregatesInput | Prisma.AdminProductScalarWhereWithAggregatesInput[]
+  id?: Prisma.StringWithAggregatesFilter<"AdminProduct"> | string
+  name?: Prisma.StringWithAggregatesFilter<"AdminProduct"> | string
+  category?: Prisma.EnumProductCategoryWithAggregatesFilter<"AdminProduct"> | $Enums.ProductCategory
+  sku?: Prisma.StringWithAggregatesFilter<"AdminProduct"> | string
+  material?: Prisma.StringNullableWithAggregatesFilter<"AdminProduct"> | string | null
+  location?: Prisma.StringNullableWithAggregatesFilter<"AdminProduct"> | string | null
+  condition?: Prisma.StringNullableWithAggregatesFilter<"AdminProduct"> | string | null
+  isActive?: Prisma.BoolWithAggregatesFilter<"AdminProduct"> | boolean
+  price?: Prisma.FloatWithAggregatesFilter<"AdminProduct"> | number
+  specialPrice?: Prisma.FloatNullableWithAggregatesFilter<"AdminProduct"> | number | null
+  specialPriceFrom?: Prisma.DateTimeNullableWithAggregatesFilter<"AdminProduct"> | Date | string | null
+  specialPriceTo?: Prisma.DateTimeNullableWithAggregatesFilter<"AdminProduct"> | Date | string | null
+  stockQuantity?: Prisma.IntWithAggregatesFilter<"AdminProduct"> | number
+  currency?: Prisma.StringWithAggregatesFilter<"AdminProduct"> | string
+  length?: Prisma.FloatNullableWithAggregatesFilter<"AdminProduct"> | number | null
+  height?: Prisma.FloatNullableWithAggregatesFilter<"AdminProduct"> | number | null
+  width?: Prisma.FloatNullableWithAggregatesFilter<"AdminProduct"> | number | null
+  weight?: Prisma.FloatNullableWithAggregatesFilter<"AdminProduct"> | number | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"AdminProduct"> | string | null
+  sourcingStory?: Prisma.StringNullableWithAggregatesFilter<"AdminProduct"> | string | null
+  images?: Prisma.StringNullableListFilter<"AdminProduct">
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"AdminProduct"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AdminProduct"> | Date | string
 }
 
-export type adminProductCreateInput = {
+export type AdminProductCreateInput = {
   id?: string
   name: string
   category: $Enums.ProductCategory
@@ -518,12 +518,12 @@ export type adminProductCreateInput = {
   weight?: number | null
   description?: string | null
   sourcingStory?: string | null
-  images?: Prisma.adminProductCreateimagesInput | string[]
+  images?: Prisma.AdminProductCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type adminProductUncheckedCreateInput = {
+export type AdminProductUncheckedCreateInput = {
   id?: string
   name: string
   category: $Enums.ProductCategory
@@ -544,12 +544,12 @@ export type adminProductUncheckedCreateInput = {
   weight?: number | null
   description?: string | null
   sourcingStory?: string | null
-  images?: Prisma.adminProductCreateimagesInput | string[]
+  images?: Prisma.AdminProductCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type adminProductUpdateInput = {
+export type AdminProductUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
@@ -570,12 +570,12 @@ export type adminProductUpdateInput = {
   weight?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourcingStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.adminProductUpdateimagesInput | string[]
+  images?: Prisma.AdminProductUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type adminProductUncheckedUpdateInput = {
+export type AdminProductUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
@@ -596,12 +596,12 @@ export type adminProductUncheckedUpdateInput = {
   weight?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourcingStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.adminProductUpdateimagesInput | string[]
+  images?: Prisma.AdminProductUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type adminProductCreateManyInput = {
+export type AdminProductCreateManyInput = {
   id?: string
   name: string
   category: $Enums.ProductCategory
@@ -622,12 +622,12 @@ export type adminProductCreateManyInput = {
   weight?: number | null
   description?: string | null
   sourcingStory?: string | null
-  images?: Prisma.adminProductCreateimagesInput | string[]
+  images?: Prisma.AdminProductCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type adminProductUpdateManyMutationInput = {
+export type AdminProductUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
@@ -648,12 +648,12 @@ export type adminProductUpdateManyMutationInput = {
   weight?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourcingStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.adminProductUpdateimagesInput | string[]
+  images?: Prisma.AdminProductUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type adminProductUncheckedUpdateManyInput = {
+export type AdminProductUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
@@ -674,7 +674,7 @@ export type adminProductUncheckedUpdateManyInput = {
   weight?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sourcingStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.adminProductUpdateimagesInput | string[]
+  images?: Prisma.AdminProductUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -687,7 +687,7 @@ export type StringNullableListFilter<$PrismaModel = never> = {
   isEmpty?: boolean
 }
 
-export type adminProductCountOrderByAggregateInput = {
+export type AdminProductCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
@@ -713,7 +713,7 @@ export type adminProductCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type adminProductAvgOrderByAggregateInput = {
+export type AdminProductAvgOrderByAggregateInput = {
   price?: Prisma.SortOrder
   specialPrice?: Prisma.SortOrder
   stockQuantity?: Prisma.SortOrder
@@ -723,7 +723,7 @@ export type adminProductAvgOrderByAggregateInput = {
   weight?: Prisma.SortOrder
 }
 
-export type adminProductMaxOrderByAggregateInput = {
+export type AdminProductMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
@@ -748,7 +748,7 @@ export type adminProductMaxOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type adminProductMinOrderByAggregateInput = {
+export type AdminProductMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
@@ -773,7 +773,7 @@ export type adminProductMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type adminProductSumOrderByAggregateInput = {
+export type AdminProductSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
   specialPrice?: Prisma.SortOrder
   stockQuantity?: Prisma.SortOrder
@@ -783,7 +783,7 @@ export type adminProductSumOrderByAggregateInput = {
   weight?: Prisma.SortOrder
 }
 
-export type adminProductCreateimagesInput = {
+export type AdminProductCreateimagesInput = {
   set: string[]
 }
 
@@ -831,7 +831,7 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type adminProductUpdateimagesInput = {
+export type AdminProductUpdateimagesInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -842,7 +842,7 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 
 
-export type adminProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type AdminProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   category?: boolean
@@ -868,7 +868,7 @@ export type adminProductSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
 }, ExtArgs["result"]["adminProduct"]>
 
-export type adminProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type AdminProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   category?: boolean
@@ -894,7 +894,7 @@ export type adminProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   updatedAt?: boolean
 }, ExtArgs["result"]["adminProduct"]>
 
-export type adminProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type AdminProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   category?: boolean
@@ -920,7 +920,7 @@ export type adminProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   updatedAt?: boolean
 }, ExtArgs["result"]["adminProduct"]>
 
-export type adminProductSelectScalar = {
+export type AdminProductSelectScalar = {
   id?: boolean
   name?: boolean
   category?: boolean
@@ -946,10 +946,10 @@ export type adminProductSelectScalar = {
   updatedAt?: boolean
 }
 
-export type adminProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "sku" | "material" | "location" | "condition" | "isActive" | "price" | "specialPrice" | "specialPriceFrom" | "specialPriceTo" | "stockQuantity" | "currency" | "length" | "height" | "width" | "weight" | "description" | "sourcingStory" | "images" | "createdAt" | "updatedAt", ExtArgs["result"]["adminProduct"]>
+export type AdminProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "sku" | "material" | "location" | "condition" | "isActive" | "price" | "specialPrice" | "specialPriceFrom" | "specialPriceTo" | "stockQuantity" | "currency" | "length" | "height" | "width" | "weight" | "description" | "sourcingStory" | "images" | "createdAt" | "updatedAt", ExtArgs["result"]["adminProduct"]>
 
-export type $adminProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "adminProduct"
+export type $AdminProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "AdminProduct"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -979,18 +979,18 @@ export type $adminProductPayload<ExtArgs extends runtime.Types.Extensions.Intern
   composites: {}
 }
 
-export type adminProductGetPayload<S extends boolean | null | undefined | adminProductDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$adminProductPayload, S>
+export type AdminProductGetPayload<S extends boolean | null | undefined | AdminProductDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$AdminProductPayload, S>
 
-export type adminProductCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<adminProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type AdminProductCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<AdminProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: AdminProductCountAggregateInputType | true
   }
 
-export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['adminProduct'], meta: { name: 'adminProduct' } }
+export interface AdminProductDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdminProduct'], meta: { name: 'AdminProduct' } }
   /**
    * Find zero or one AdminProduct that matches the filter.
-   * @param {adminProductFindUniqueArgs} args - Arguments to find a AdminProduct
+   * @param {AdminProductFindUniqueArgs} args - Arguments to find a AdminProduct
    * @example
    * // Get one AdminProduct
    * const adminProduct = await prisma.adminProduct.findUnique({
@@ -999,12 +999,12 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findUnique<T extends adminProductFindUniqueArgs>(args: Prisma.SelectSubset<T, adminProductFindUniqueArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends AdminProductFindUniqueArgs>(args: Prisma.SelectSubset<T, AdminProductFindUniqueArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one AdminProduct that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {adminProductFindUniqueOrThrowArgs} args - Arguments to find a AdminProduct
+   * @param {AdminProductFindUniqueOrThrowArgs} args - Arguments to find a AdminProduct
    * @example
    * // Get one AdminProduct
    * const adminProduct = await prisma.adminProduct.findUniqueOrThrow({
@@ -1013,13 +1013,13 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findUniqueOrThrow<T extends adminProductFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, adminProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends AdminProductFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, AdminProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first AdminProduct that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductFindFirstArgs} args - Arguments to find a AdminProduct
+   * @param {AdminProductFindFirstArgs} args - Arguments to find a AdminProduct
    * @example
    * // Get one AdminProduct
    * const adminProduct = await prisma.adminProduct.findFirst({
@@ -1028,14 +1028,14 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findFirst<T extends adminProductFindFirstArgs>(args?: Prisma.SelectSubset<T, adminProductFindFirstArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends AdminProductFindFirstArgs>(args?: Prisma.SelectSubset<T, AdminProductFindFirstArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first AdminProduct that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductFindFirstOrThrowArgs} args - Arguments to find a AdminProduct
+   * @param {AdminProductFindFirstOrThrowArgs} args - Arguments to find a AdminProduct
    * @example
    * // Get one AdminProduct
    * const adminProduct = await prisma.adminProduct.findFirstOrThrow({
@@ -1044,13 +1044,13 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  findFirstOrThrow<T extends adminProductFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, adminProductFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends AdminProductFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, AdminProductFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more AdminProducts that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {AdminProductFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all AdminProducts
    * const adminProducts = await prisma.adminProduct.findMany()
@@ -1062,11 +1062,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * const adminProductWithIdOnly = await prisma.adminProduct.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends adminProductFindManyArgs>(args?: Prisma.SelectSubset<T, adminProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends AdminProductFindManyArgs>(args?: Prisma.SelectSubset<T, AdminProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a AdminProduct.
-   * @param {adminProductCreateArgs} args - Arguments to create a AdminProduct.
+   * @param {AdminProductCreateArgs} args - Arguments to create a AdminProduct.
    * @example
    * // Create one AdminProduct
    * const AdminProduct = await prisma.adminProduct.create({
@@ -1076,11 +1076,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  create<T extends adminProductCreateArgs>(args: Prisma.SelectSubset<T, adminProductCreateArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends AdminProductCreateArgs>(args: Prisma.SelectSubset<T, AdminProductCreateArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many AdminProducts.
-   * @param {adminProductCreateManyArgs} args - Arguments to create many AdminProducts.
+   * @param {AdminProductCreateManyArgs} args - Arguments to create many AdminProducts.
    * @example
    * // Create many AdminProducts
    * const adminProduct = await prisma.adminProduct.createMany({
@@ -1090,11 +1090,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    *     
    */
-  createMany<T extends adminProductCreateManyArgs>(args?: Prisma.SelectSubset<T, adminProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends AdminProductCreateManyArgs>(args?: Prisma.SelectSubset<T, AdminProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create many AdminProducts and returns the data saved in the database.
-   * @param {adminProductCreateManyAndReturnArgs} args - Arguments to create many AdminProducts.
+   * @param {AdminProductCreateManyAndReturnArgs} args - Arguments to create many AdminProducts.
    * @example
    * // Create many AdminProducts
    * const adminProduct = await prisma.adminProduct.createManyAndReturn({
@@ -1114,11 +1114,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends adminProductCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, adminProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends AdminProductCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, AdminProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Delete a AdminProduct.
-   * @param {adminProductDeleteArgs} args - Arguments to delete one AdminProduct.
+   * @param {AdminProductDeleteArgs} args - Arguments to delete one AdminProduct.
    * @example
    * // Delete one AdminProduct
    * const AdminProduct = await prisma.adminProduct.delete({
@@ -1128,11 +1128,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  delete<T extends adminProductDeleteArgs>(args: Prisma.SelectSubset<T, adminProductDeleteArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends AdminProductDeleteArgs>(args: Prisma.SelectSubset<T, AdminProductDeleteArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one AdminProduct.
-   * @param {adminProductUpdateArgs} args - Arguments to update one AdminProduct.
+   * @param {AdminProductUpdateArgs} args - Arguments to update one AdminProduct.
    * @example
    * // Update one AdminProduct
    * const adminProduct = await prisma.adminProduct.update({
@@ -1145,11 +1145,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  update<T extends adminProductUpdateArgs>(args: Prisma.SelectSubset<T, adminProductUpdateArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends AdminProductUpdateArgs>(args: Prisma.SelectSubset<T, AdminProductUpdateArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more AdminProducts.
-   * @param {adminProductDeleteManyArgs} args - Arguments to filter AdminProducts to delete.
+   * @param {AdminProductDeleteManyArgs} args - Arguments to filter AdminProducts to delete.
    * @example
    * // Delete a few AdminProducts
    * const { count } = await prisma.adminProduct.deleteMany({
@@ -1159,13 +1159,13 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  deleteMany<T extends adminProductDeleteManyArgs>(args?: Prisma.SelectSubset<T, adminProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends AdminProductDeleteManyArgs>(args?: Prisma.SelectSubset<T, AdminProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more AdminProducts.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {AdminProductUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many AdminProducts
    * const adminProduct = await prisma.adminProduct.updateMany({
@@ -1178,11 +1178,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * })
    * 
    */
-  updateMany<T extends adminProductUpdateManyArgs>(args: Prisma.SelectSubset<T, adminProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends AdminProductUpdateManyArgs>(args: Prisma.SelectSubset<T, AdminProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more AdminProducts and returns the data updated in the database.
-   * @param {adminProductUpdateManyAndReturnArgs} args - Arguments to update many AdminProducts.
+   * @param {AdminProductUpdateManyAndReturnArgs} args - Arguments to update many AdminProducts.
    * @example
    * // Update many AdminProducts
    * const adminProduct = await prisma.adminProduct.updateManyAndReturn({
@@ -1208,11 +1208,11 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends adminProductUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, adminProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends AdminProductUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, AdminProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
    * Create or update one AdminProduct.
-   * @param {adminProductUpsertArgs} args - Arguments to update or create a AdminProduct.
+   * @param {AdminProductUpsertArgs} args - Arguments to update or create a AdminProduct.
    * @example
    * // Update or create a AdminProduct
    * const adminProduct = await prisma.adminProduct.upsert({
@@ -1227,14 +1227,14 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
    */
-  upsert<T extends adminProductUpsertArgs>(args: Prisma.SelectSubset<T, adminProductUpsertArgs<ExtArgs>>): Prisma.Prisma__adminProductClient<runtime.Types.Result.GetResult<Prisma.$adminProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends AdminProductUpsertArgs>(args: Prisma.SelectSubset<T, AdminProductUpsertArgs<ExtArgs>>): Prisma.Prisma__AdminProductClient<runtime.Types.Result.GetResult<Prisma.$AdminProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of AdminProducts.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductCountArgs} args - Arguments to filter AdminProducts to count.
+   * @param {AdminProductCountArgs} args - Arguments to filter AdminProducts to count.
    * @example
    * // Count the number of AdminProducts
    * const count = await prisma.adminProduct.count({
@@ -1243,8 +1243,8 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    *   }
    * })
   **/
-  count<T extends adminProductCountArgs>(
-    args?: Prisma.Subset<T, adminProductCountArgs>,
+  count<T extends AdminProductCountArgs>(
+    args?: Prisma.Subset<T, AdminProductCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -1283,7 +1283,7 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * Group by AdminProduct.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {adminProductGroupByArgs} args - Group by arguments.
+   * @param {AdminProductGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -1298,14 +1298,14 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
    * 
   **/
   groupBy<
-    T extends adminProductGroupByArgs,
+    T extends AdminProductGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: adminProductGroupByArgs['orderBy'] }
-      : { orderBy?: adminProductGroupByArgs['orderBy'] },
+      ? { orderBy: AdminProductGroupByArgs['orderBy'] }
+      : { orderBy?: AdminProductGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -1354,20 +1354,20 @@ export interface adminProductDelegate<ExtArgs extends runtime.Types.Extensions.I
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, adminProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, AdminProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the adminProduct model
+ * Fields of the AdminProduct model
  */
-readonly fields: adminProductFieldRefs;
+readonly fields: AdminProductFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for adminProduct.
+ * The delegate class that acts as a "Promise-like" for AdminProduct.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__adminProductClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__AdminProductClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1395,393 +1395,393 @@ export interface Prisma__adminProductClient<T, Null = never, ExtArgs extends run
 
 
 /**
- * Fields of the adminProduct model
+ * Fields of the AdminProduct model
  */
-export interface adminProductFieldRefs {
-  readonly id: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly name: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly category: Prisma.FieldRef<"adminProduct", 'ProductCategory'>
-  readonly sku: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly material: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly location: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly condition: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly isActive: Prisma.FieldRef<"adminProduct", 'Boolean'>
-  readonly price: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly specialPrice: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly specialPriceFrom: Prisma.FieldRef<"adminProduct", 'DateTime'>
-  readonly specialPriceTo: Prisma.FieldRef<"adminProduct", 'DateTime'>
-  readonly stockQuantity: Prisma.FieldRef<"adminProduct", 'Int'>
-  readonly currency: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly length: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly height: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly width: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly weight: Prisma.FieldRef<"adminProduct", 'Float'>
-  readonly description: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly sourcingStory: Prisma.FieldRef<"adminProduct", 'String'>
-  readonly images: Prisma.FieldRef<"adminProduct", 'String[]'>
-  readonly createdAt: Prisma.FieldRef<"adminProduct", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"adminProduct", 'DateTime'>
+export interface AdminProductFieldRefs {
+  readonly id: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly name: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly category: Prisma.FieldRef<"AdminProduct", 'ProductCategory'>
+  readonly sku: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly material: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly location: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly condition: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly isActive: Prisma.FieldRef<"AdminProduct", 'Boolean'>
+  readonly price: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly specialPrice: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly specialPriceFrom: Prisma.FieldRef<"AdminProduct", 'DateTime'>
+  readonly specialPriceTo: Prisma.FieldRef<"AdminProduct", 'DateTime'>
+  readonly stockQuantity: Prisma.FieldRef<"AdminProduct", 'Int'>
+  readonly currency: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly length: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly height: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly width: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly weight: Prisma.FieldRef<"AdminProduct", 'Float'>
+  readonly description: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly sourcingStory: Prisma.FieldRef<"AdminProduct", 'String'>
+  readonly images: Prisma.FieldRef<"AdminProduct", 'String[]'>
+  readonly createdAt: Prisma.FieldRef<"AdminProduct", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"AdminProduct", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * adminProduct findUnique
+ * AdminProduct findUnique
  */
-export type adminProductFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter, which adminProduct to fetch.
+   * Filter, which AdminProduct to fetch.
    */
-  where: Prisma.adminProductWhereUniqueInput
+  where: Prisma.AdminProductWhereUniqueInput
 }
 
 /**
- * adminProduct findUniqueOrThrow
+ * AdminProduct findUniqueOrThrow
  */
-export type adminProductFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter, which adminProduct to fetch.
+   * Filter, which AdminProduct to fetch.
    */
-  where: Prisma.adminProductWhereUniqueInput
+  where: Prisma.AdminProductWhereUniqueInput
 }
 
 /**
- * adminProduct findFirst
+ * AdminProduct findFirst
  */
-export type adminProductFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter, which adminProduct to fetch.
+   * Filter, which AdminProduct to fetch.
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of adminProducts to fetch.
+   * Determine the order of AdminProducts to fetch.
    */
-  orderBy?: Prisma.adminProductOrderByWithRelationInput | Prisma.adminProductOrderByWithRelationInput[]
+  orderBy?: Prisma.AdminProductOrderByWithRelationInput | Prisma.AdminProductOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for adminProducts.
+   * Sets the position for searching for AdminProducts.
    */
-  cursor?: Prisma.adminProductWhereUniqueInput
+  cursor?: Prisma.AdminProductWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` adminProducts from the position of the cursor.
+   * Take `±n` AdminProducts from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` adminProducts.
+   * Skip the first `n` AdminProducts.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of adminProducts.
+   * Filter by unique combinations of AdminProducts.
    */
   distinct?: Prisma.AdminProductScalarFieldEnum | Prisma.AdminProductScalarFieldEnum[]
 }
 
 /**
- * adminProduct findFirstOrThrow
+ * AdminProduct findFirstOrThrow
  */
-export type adminProductFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter, which adminProduct to fetch.
+   * Filter, which AdminProduct to fetch.
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of adminProducts to fetch.
+   * Determine the order of AdminProducts to fetch.
    */
-  orderBy?: Prisma.adminProductOrderByWithRelationInput | Prisma.adminProductOrderByWithRelationInput[]
+  orderBy?: Prisma.AdminProductOrderByWithRelationInput | Prisma.AdminProductOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for adminProducts.
+   * Sets the position for searching for AdminProducts.
    */
-  cursor?: Prisma.adminProductWhereUniqueInput
+  cursor?: Prisma.AdminProductWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` adminProducts from the position of the cursor.
+   * Take `±n` AdminProducts from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` adminProducts.
+   * Skip the first `n` AdminProducts.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of adminProducts.
+   * Filter by unique combinations of AdminProducts.
    */
   distinct?: Prisma.AdminProductScalarFieldEnum | Prisma.AdminProductScalarFieldEnum[]
 }
 
 /**
- * adminProduct findMany
+ * AdminProduct findMany
  */
-export type adminProductFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter, which adminProducts to fetch.
+   * Filter, which AdminProducts to fetch.
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of adminProducts to fetch.
+   * Determine the order of AdminProducts to fetch.
    */
-  orderBy?: Prisma.adminProductOrderByWithRelationInput | Prisma.adminProductOrderByWithRelationInput[]
+  orderBy?: Prisma.AdminProductOrderByWithRelationInput | Prisma.AdminProductOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing adminProducts.
+   * Sets the position for listing AdminProducts.
    */
-  cursor?: Prisma.adminProductWhereUniqueInput
+  cursor?: Prisma.AdminProductWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` adminProducts from the position of the cursor.
+   * Take `±n` AdminProducts from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` adminProducts.
+   * Skip the first `n` AdminProducts.
    */
   skip?: number
   distinct?: Prisma.AdminProductScalarFieldEnum | Prisma.AdminProductScalarFieldEnum[]
 }
 
 /**
- * adminProduct create
+ * AdminProduct create
  */
-export type adminProductCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * The data needed to create a adminProduct.
+   * The data needed to create a AdminProduct.
    */
-  data: Prisma.XOR<Prisma.adminProductCreateInput, Prisma.adminProductUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.AdminProductCreateInput, Prisma.AdminProductUncheckedCreateInput>
 }
 
 /**
- * adminProduct createMany
+ * AdminProduct createMany
  */
-export type adminProductCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many adminProducts.
+   * The data used to create many AdminProducts.
    */
-  data: Prisma.adminProductCreateManyInput | Prisma.adminProductCreateManyInput[]
+  data: Prisma.AdminProductCreateManyInput | Prisma.AdminProductCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * adminProduct createManyAndReturn
+ * AdminProduct createManyAndReturn
  */
-export type adminProductCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.AdminProductSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * The data used to create many adminProducts.
+   * The data used to create many AdminProducts.
    */
-  data: Prisma.adminProductCreateManyInput | Prisma.adminProductCreateManyInput[]
+  data: Prisma.AdminProductCreateManyInput | Prisma.AdminProductCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * adminProduct update
+ * AdminProduct update
  */
-export type adminProductUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * The data needed to update a adminProduct.
+   * The data needed to update a AdminProduct.
    */
-  data: Prisma.XOR<Prisma.adminProductUpdateInput, Prisma.adminProductUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.AdminProductUpdateInput, Prisma.AdminProductUncheckedUpdateInput>
   /**
-   * Choose, which adminProduct to update.
+   * Choose, which AdminProduct to update.
    */
-  where: Prisma.adminProductWhereUniqueInput
+  where: Prisma.AdminProductWhereUniqueInput
 }
 
 /**
- * adminProduct updateMany
+ * AdminProduct updateMany
  */
-export type adminProductUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update adminProducts.
+   * The data used to update AdminProducts.
    */
-  data: Prisma.XOR<Prisma.adminProductUpdateManyMutationInput, Prisma.adminProductUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.AdminProductUpdateManyMutationInput, Prisma.AdminProductUncheckedUpdateManyInput>
   /**
-   * Filter which adminProducts to update
+   * Filter which AdminProducts to update
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
-   * Limit how many adminProducts to update.
+   * Limit how many AdminProducts to update.
    */
   limit?: number
 }
 
 /**
- * adminProduct updateManyAndReturn
+ * AdminProduct updateManyAndReturn
  */
-export type adminProductUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.AdminProductSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * The data used to update adminProducts.
+   * The data used to update AdminProducts.
    */
-  data: Prisma.XOR<Prisma.adminProductUpdateManyMutationInput, Prisma.adminProductUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.AdminProductUpdateManyMutationInput, Prisma.AdminProductUncheckedUpdateManyInput>
   /**
-   * Filter which adminProducts to update
+   * Filter which AdminProducts to update
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
-   * Limit how many adminProducts to update.
+   * Limit how many AdminProducts to update.
    */
   limit?: number
 }
 
 /**
- * adminProduct upsert
+ * AdminProduct upsert
  */
-export type adminProductUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * The filter to search for the adminProduct to update in case it exists.
+   * The filter to search for the AdminProduct to update in case it exists.
    */
-  where: Prisma.adminProductWhereUniqueInput
+  where: Prisma.AdminProductWhereUniqueInput
   /**
-   * In case the adminProduct found by the `where` argument doesn't exist, create a new adminProduct with this data.
+   * In case the AdminProduct found by the `where` argument doesn't exist, create a new AdminProduct with this data.
    */
-  create: Prisma.XOR<Prisma.adminProductCreateInput, Prisma.adminProductUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.AdminProductCreateInput, Prisma.AdminProductUncheckedCreateInput>
   /**
-   * In case the adminProduct was found with the provided `where` argument, update it with this data.
+   * In case the AdminProduct was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.adminProductUpdateInput, Prisma.adminProductUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.AdminProductUpdateInput, Prisma.AdminProductUncheckedUpdateInput>
 }
 
 /**
- * adminProduct delete
+ * AdminProduct delete
  */
-export type adminProductDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
   /**
-   * Filter which adminProduct to delete.
+   * Filter which AdminProduct to delete.
    */
-  where: Prisma.adminProductWhereUniqueInput
+  where: Prisma.AdminProductWhereUniqueInput
 }
 
 /**
- * adminProduct deleteMany
+ * AdminProduct deleteMany
  */
-export type adminProductDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which adminProducts to delete
+   * Filter which AdminProducts to delete
    */
-  where?: Prisma.adminProductWhereInput
+  where?: Prisma.AdminProductWhereInput
   /**
-   * Limit how many adminProducts to delete.
+   * Limit how many AdminProducts to delete.
    */
   limit?: number
 }
 
 /**
- * adminProduct without action
+ * AdminProduct without action
  */
-export type adminProductDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AdminProductDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the adminProduct
+   * Select specific fields to fetch from the AdminProduct
    */
-  select?: Prisma.adminProductSelect<ExtArgs> | null
+  select?: Prisma.AdminProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the adminProduct
+   * Omit specific fields from the AdminProduct
    */
-  omit?: Prisma.adminProductOmit<ExtArgs> | null
+  omit?: Prisma.AdminProductOmit<ExtArgs> | null
 }

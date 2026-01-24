@@ -22,7 +22,7 @@ export class CloudinaryService {
     folder = 'profiles',
   ): Promise<UploadApiResponse> {
     return new Promise((resolve, reject) => {
-      console.log('file and folder ', file, folder);
+      // console.log('file and folder ', file, folder);
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder,

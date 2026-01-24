@@ -263,6 +263,40 @@ export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
 }
 
+export type EnumConditionFilter<$PrismaModel = never> = {
+  equals?: $Enums.Condition | Prisma.EnumConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumConditionFilter<$PrismaModel> | $Enums.Condition
+}
+
+export type EnumIsAdminApproveFilter<$PrismaModel = never> = {
+  equals?: $Enums.IsAdminApprove | Prisma.EnumIsAdminApproveFieldRefInput<$PrismaModel>
+  in?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  notIn?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel> | $Enums.IsAdminApprove
+}
+
+export type EnumConditionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Condition | Prisma.EnumConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumConditionWithAggregatesFilter<$PrismaModel> | $Enums.Condition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumConditionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumConditionFilter<$PrismaModel>
+}
+
+export type EnumIsAdminApproveWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.IsAdminApprove | Prisma.EnumIsAdminApproveFieldRefInput<$PrismaModel>
+  in?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  notIn?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumIsAdminApproveWithAggregatesFilter<$PrismaModel> | $Enums.IsAdminApprove
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -512,6 +546,40 @@ export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumRoleFilter<$PrismaModel>
   _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
+}
+
+export type NestedEnumConditionFilter<$PrismaModel = never> = {
+  equals?: $Enums.Condition | Prisma.EnumConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumConditionFilter<$PrismaModel> | $Enums.Condition
+}
+
+export type NestedEnumIsAdminApproveFilter<$PrismaModel = never> = {
+  equals?: $Enums.IsAdminApprove | Prisma.EnumIsAdminApproveFieldRefInput<$PrismaModel>
+  in?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  notIn?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel> | $Enums.IsAdminApprove
+}
+
+export type NestedEnumConditionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Condition | Prisma.EnumConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Condition[] | Prisma.ListEnumConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumConditionWithAggregatesFilter<$PrismaModel> | $Enums.Condition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumConditionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumConditionFilter<$PrismaModel>
+}
+
+export type NestedEnumIsAdminApproveWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.IsAdminApprove | Prisma.EnumIsAdminApproveFieldRefInput<$PrismaModel>
+  in?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  notIn?: $Enums.IsAdminApprove[] | Prisma.ListEnumIsAdminApproveFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumIsAdminApproveWithAggregatesFilter<$PrismaModel> | $Enums.IsAdminApprove
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumIsAdminApproveFilter<$PrismaModel>
 }
 
 

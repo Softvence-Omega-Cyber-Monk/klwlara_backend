@@ -12,6 +12,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
 // import { SeedService } from './common/seed/seed.services';
 import { AdminProductsModule } from './modules/admin-products/admin-products.module';
+import { UserProductsModule } from './modules/user-products/user-products.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AdminProductsModule } from './modules/admin-products/admin-products.mod
     UserModule,
     AuthModule,
     AdminProductsModule,
+    UserProductsModule,
 
     // RedisModule,
   ],

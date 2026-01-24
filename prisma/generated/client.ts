@@ -38,12 +38,17 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model adminProduct
+ * Model AdminProduct
  * 
  */
-export type adminProduct = Prisma.adminProductModel
+export type AdminProduct = Prisma.AdminProductModel
 /**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model UserProducts
+ * 
+ */
+export type UserProducts = Prisma.UserProductsModel

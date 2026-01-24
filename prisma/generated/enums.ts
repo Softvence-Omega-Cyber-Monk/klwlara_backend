@@ -23,3 +23,21 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const Condition = {
+  Fresh_Conditions: 'Fresh_Conditions',
+  Brand_New: 'Brand_New',
+  Used: 'Used'
+} as const
+
+export type Condition = (typeof Condition)[keyof typeof Condition]
+
+
+export const IsAdminApprove = {
+  approved: 'approved',
+  rejected: 'rejected',
+  pending: 'pending'
+} as const
+
+export type IsAdminApprove = (typeof IsAdminApprove)[keyof typeof IsAdminApprove]

@@ -1,0 +1,45 @@
+enum Condition {
+    Fresh_Conditions
+    Brand_New
+    Used
+}
+
+enum IsAdminApprove {
+    approved
+    rejected
+    pending
+}
+
+model UserProducts {
+    id        String          @id @default(cuid())
+    name      String
+    category  ProductCategory
+    sku       String          @unique
+    material  String?
+    location  String?
+    condition Condition
+    isActive  Boolean         @default(true)
+
+    price            Float
+    specialPrice     Float?
+    specialPriceFrom DateTime?
+    specialPriceTo   DateTime?
+
+    stockQuantity Int
+    currency      String @default("USD")
+
+    length Float?
+    height Float?
+    width  Float?
+    weight Float?
+
+    description   String?
+    sourcingStory String?
+
+    images String[]
+
+    isAdminApprove IsAdminApprove @default(pending)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
