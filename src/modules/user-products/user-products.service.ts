@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma, ProductCategory } from 'generated/prisma';
+import { IsAdminApprove, Prisma, ProductCategory } from 'generated/prisma';
 import { CreateUserProductDto } from './dto/create-user-product.dto';
 import { UpdateUserProductDto } from './dto/update-user-product.dto';
 
@@ -21,12 +21,13 @@ export class UserProductsService {
 
   async findAll(params: {
     page: number;
+
     limit: number;
     search?: string;
     category?: ProductCategory;
-    isActive?: boolean;
+    isAdminApprove?: IsAdminApprove;
   }) {
-    const { page, limit, search, category, isActive } = params;
+    const { page, limit, search, category, isAdminApprove } = params;
 
     const skip = (page - 1) * limit;
 
@@ -43,8 +44,51 @@ export class UserProductsService {
       where.category = category;
     }
 
-    if (typeof isActive === 'boolean') {
-      where.isActive = isActive;
+    if (isAdminApprove !== undefined) {
+      where.isAdminApprove = isAdminApprove;
+    }
+
+    const [data, total] = await Promise.all([
+      this.prisma.client.userProducts.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: { createdAt: 'desc' },
+      }),
+      this.prisma.client.userProducts.count({ where }),
+    ]);
+
+    return {
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
+  async findAllByUser(params: {
+    page: number;
+    limit: number;
+    search?: string;
+    isAdminApprove?: IsAdminApprove;
+  }) {
+    const { page, limit, search, isAdminApprove } = params;
+
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+
+    if (search) {
+      where.OR = [
+        { name: { contains: search, mode: 'insensitive' } },
+        { sku: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    if (isAdminApprove !== undefined) {
+      where.isAdminApprove = isAdminApprove;
     }
 
     const [data, total] = await Promise.all([
@@ -116,5 +160,13 @@ export class UserProductsService {
     }
 
     return result; // { count: number }
+  }
+
+  async updateStatus(body: any) {
+    const result = await this.prisma.client.userProducts.update({
+      where: { id: body.productId },
+      data: { isAdminApprove: body.status },
+    });
+    return result;
   }
 }

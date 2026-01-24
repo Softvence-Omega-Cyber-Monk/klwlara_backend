@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
   IsString,
@@ -15,6 +15,10 @@ import {
 import { Condition, IsAdminApprove, ProductCategory } from 'generated/prisma';
 
 export class CreateUserProductDto {
+  @ApiProperty({ example: 'cuid12345' })
+  @IsString()
+  userId: string; // ✅ required
+
   @ApiPropertyOptional({ example: 'Electronics' })
   @IsString()
   name: string;
