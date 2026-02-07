@@ -13,6 +13,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 // import { SeedService } from './common/seed/seed.services';
 import { AdminProductsModule } from './modules/admin-products/admin-products.module';
 import { UserProductsModule } from './modules/user-products/user-products.module';
+import { SocketModule } from './modules/socket-gateway/socket.module';
+import { SocketGatewayService } from './modules/socket-gateway/socket-gateway.service';
 
 @Module({
   imports: [
@@ -28,6 +30,7 @@ import { UserProductsModule } from './modules/user-products/user-products.module
     AuthModule,
     AdminProductsModule,
     UserProductsModule,
+    SocketModule,
 
     // RedisModule,
   ],
@@ -35,6 +38,7 @@ import { UserProductsModule } from './modules/user-products/user-products.module
   providers: [
     AppService,
     ConfigService,
+    SocketGatewayService,
     // SeedService
   ],
 })
