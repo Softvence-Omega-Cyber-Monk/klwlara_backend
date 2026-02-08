@@ -1,0 +1,10 @@
+model Chat {
+  id         Int      @id @default(autoincrement())
+  content    String
+  sender     User     @relation("sentMessages", fields: [senderId], references: [id])
+  senderId   String
+  receiver   User     @relation("receivedMessages", fields: [receiverId], references: [id])
+  receiverId String
+  createdAt  DateTime @default(now())
+  isRead     Boolean  @default(false)
+}

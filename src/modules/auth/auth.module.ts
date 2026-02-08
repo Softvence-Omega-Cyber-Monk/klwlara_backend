@@ -9,7 +9,6 @@ import { UserModule } from '../user/user.module';
 import { UtilsModule } from '../utils/utils.module';
 import { GoogleStrategy } from './utils/google.stratey';
 import { PassportModule } from '@nestjs/passport';
-import { SocketGateway } from 'src/modules/socket-gateway/socket.gateway';
 
 @Module({
   imports: [
@@ -28,6 +27,6 @@ import { SocketGateway } from 'src/modules/socket-gateway/socket.gateway';
   ],
 
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, GoogleStrategy, SocketGateway],
+  providers: [AuthService, JwtStrategy, GoogleStrategy],
 })
 export class AuthModule {}

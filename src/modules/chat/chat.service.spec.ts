@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SocketGatewayService } from './socket-gateway.service';
+import { SocketGatewayService } from './chat.service';
 
 describe('SocketGatewayService', () => {
   let service: SocketGatewayService;

@@ -53,7 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   AdminProduct: 'AdminProduct',
   User: 'User',
-  UserProducts: 'UserProducts'
+  UserProducts: 'UserProducts',
+  Chat: 'Chat'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -144,6 +145,18 @@ export const UserProductsScalarFieldEnum = {
 } as const
 
 export type UserProductsScalarFieldEnum = (typeof UserProductsScalarFieldEnum)[keyof typeof UserProductsScalarFieldEnum]
+
+
+export const ChatScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  createdAt: 'createdAt',
+  isRead: 'isRead'
+} as const
+
+export type ChatScalarFieldEnum = (typeof ChatScalarFieldEnum)[keyof typeof ChatScalarFieldEnum]
 
 
 export const SortOrder = {

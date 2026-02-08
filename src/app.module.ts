@@ -13,8 +13,10 @@ import { ScheduleModule } from '@nestjs/schedule';
 // import { SeedService } from './common/seed/seed.services';
 import { AdminProductsModule } from './modules/admin-products/admin-products.module';
 import { UserProductsModule } from './modules/user-products/user-products.module';
-import { SocketModule } from './modules/socket-gateway/socket.module';
-import { SocketGatewayService } from './modules/socket-gateway/socket-gateway.service';
+
+import { ChatService } from './modules/chat/chat.service';
+import { ChatController } from './modules/chat/chat.controller';
+import { ChatModule } from './modules/chat/chat.module';
 
 @Module({
   imports: [
@@ -30,16 +32,11 @@ import { SocketGatewayService } from './modules/socket-gateway/socket-gateway.se
     AuthModule,
     AdminProductsModule,
     UserProductsModule,
-    SocketModule,
+    ChatModule,
 
     // RedisModule,
   ],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    ConfigService,
-    SocketGatewayService,
-    // SeedService
-  ],
+  controllers: [AppController, ChatController],
+  providers: [AppService, ConfigService, ChatService],
 })
 export class AppModule {}
