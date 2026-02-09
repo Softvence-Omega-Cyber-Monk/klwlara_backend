@@ -18,6 +18,8 @@ export class ChatService {
   }
 
   async getConversation(userA: string, userB: string) {
+    console.log('two user ', userA, userB);
+
     return this.prismaService.client.chat.findMany({
       where: {
         OR: [

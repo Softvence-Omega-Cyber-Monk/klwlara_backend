@@ -12,21 +12,24 @@ import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
+    ConfigModule,
+    PassportModule.register({ session: false }),
     UserModule,
     UtilsModule,
     JwtModule.registerAsync({
-      imports: [ConfigModule, PassportModule.register({ session: false })],
+      global: true,
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get('jwt_access_secret'),
+      useFactory: async () => ({
+        secret: process.env.JWT_ACCESS_SECRET,
+
         signOptions: {
-          expiresIn: configService.get('jwt_access_expires_in'),
+          expiresIn: parseInt(process.env.JWT_ACCESS_EXPIRES_IN || '3600', 10),
         },
       }),
     }),
   ],
-
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, GoogleStrategy],
+  exports: [JwtModule, PassportModule], // 👈 IMPORTANT
 })
 export class AuthModule {}

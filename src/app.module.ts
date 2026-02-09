@@ -25,7 +25,6 @@ import { ChatModule } from './modules/chat/chat.module';
       load: [configuration],
     }),
     ScheduleModule.forRoot(),
-
     PrismaModule,
     UtilsModule,
     UserModule,
@@ -33,10 +32,8 @@ import { ChatModule } from './modules/chat/chat.module';
     AdminProductsModule,
     UserProductsModule,
     ChatModule,
-
-    // RedisModule,
   ],
-  controllers: [AppController, ChatController],
-  providers: [AppService, ConfigService, ChatService],
+  controllers: [AppController],
+  providers: [AppService, ConfigService],
 })
 export class AppModule {}

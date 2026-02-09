@@ -8,16 +8,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from '../user/user.module';
 
 @Module({
-  imports: [
-    PrismaModule,
-    JwtModule.register({
-      secret: process.env.JWT_ACCESS_SECRET,
-      signOptions: { expiresIn: '1h' }, // optional
-    }),
-    UserModule, // <--- ADD THIS
-  ],
+  imports: [PrismaModule, UserModule],
   providers: [ChatService, SocketGateway],
   controllers: [ChatController],
-  exports: [ChatService, SocketGateway],
 })
 export class ChatModule {}
